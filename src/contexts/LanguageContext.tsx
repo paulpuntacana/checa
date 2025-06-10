@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 type Language = 'en' | 'es';
@@ -11,6 +10,9 @@ interface Translations {
 
 const translations: Translations = {
   en: {
+    // Language names
+    'language.english': 'English',
+    'language.spanish': 'Spanish',
     // Hero section
     'hero.title1': 'Tropical Beauty',
     'hero.title2': 'Makeup Artistry',
@@ -35,25 +37,31 @@ const translations: Translations = {
     
     // Services section
     'services.title': 'Our Services',
-    'services.subtitle': 'Professional makeup artistry tailored to your special moments',
+    'services.subtitle': 'Professional makeup services for all your special occasions',
     'services.bridal': 'Bridal Makeup',
-    'services.bridalDesc': 'Perfect wedding day looks that photograph beautifully and last all day',
-    'services.events': 'Special Events',
-    'services.eventsDesc': 'Glamorous makeup for galas, parties, and photoshoots',
-    'services.resort': 'Resort Services',
-    'services.resortDesc': 'On-location makeup services for resort guests and events',
+    'services.bridalDesc': 'Flawless bridal makeup with a pre-wedding trial included.',
+    'services.events': 'Special Occasions',
+    'services.eventsDesc': 'Makeup for parties, birthdays, graduations, and more.',
+    'services.resort': 'Resort Appointments',
+    'services.resortDesc': 'On-site makeup services at your resort or wedding venue.',
+    'services.homeStudio': 'Studio Sessions',
+    'services.homeStudioDesc': 'Private makeup sessions in our Punta Cana home studio.',
     
     // How We Work section
     'howWeWork.title': 'How We Work',
     'howWeWork.subtitle': 'Our professional process ensures the perfect look for your special day',
-    'howWeWork.consultation': 'Consultation',
-    'howWeWork.consultationDesc': 'We discuss your vision, skin type, and event details',
-    'howWeWork.trial': 'Makeup Trial',
-    'howWeWork.trialDesc': 'Perfect your look with a professional trial session',
-    'howWeWork.eventDay': 'Event Day',
-    'howWeWork.eventDayDesc': 'Flawless application and touch-ups throughout your event',
-    'howWeWork.followUp': 'Follow-up',
-    'howWeWork.followUpDesc': 'We ensure your complete satisfaction with our service',
+    'howWeWork.steps.0.title': 'Consultation',
+    'howWeWork.steps.0.description': 'We discuss your vision, preferences, and event details',
+    'howWeWork.steps.0.details': 'During this session, we align with your desired style, skin type, and occasion to create the perfect plan for your makeup look.',
+    'howWeWork.steps.1.title': 'Skin Prep & Product Selection',
+    'howWeWork.steps.1.description': 'We prep your skin and choose the right products',
+    'howWeWork.steps.1.details': 'We prepare your skin with care and select long-lasting products tailored to your needs and the tropical Dominican climate.',
+    'howWeWork.steps.2.title': 'Personalized Application',
+    'howWeWork.steps.2.description': 'We bring your dream look to life',
+    'howWeWork.steps.2.details': 'Your look is applied with precision, blending artistry with technique — fully customized to match your features and style.',
+    'howWeWork.steps.3.title': 'Final Touch & Set',
+    'howWeWork.steps.3.description': 'We finalize the look and ensure it stays perfect',
+    'howWeWork.steps.3.details': 'We finish with expert setting techniques, final checks, and a touch-up kit if needed — so you stay flawless all day.',
     
     // Partnership section
     'partnership.title': 'Resort Partnerships',
@@ -91,6 +99,9 @@ const translations: Translations = {
     'contact.send': 'Send Message',
   },
   es: {
+    // Language names
+    'language.english': 'Inglés',
+    'language.spanish': 'Español',
     // Hero section
     'hero.title1': 'Belleza Tropical',
     'hero.title2': 'Arte en Maquillaje',
@@ -115,25 +126,31 @@ const translations: Translations = {
     
     // Services section
     'services.title': 'Nuestros Servicios',
-    'services.subtitle': 'Arte profesional en maquillaje adaptado a tus momentos especiales',
-    'services.bridal': 'Maquillaje Nupcial',
-    'services.bridalDesc': 'Looks perfectos para el día de la boda que se ven hermosos en fotos y duran todo el día',
+    'services.subtitle': 'Servicios profesionales de maquillaje para todas tus ocasiones especiales',
+    'services.bridal': 'Maquillaje de Novia',
+    'services.bridalDesc': 'Look de novia perfecto con prueba previa incluida.',
     'services.events': 'Eventos Especiales',
-    'services.eventsDesc': 'Maquillaje glamoroso para galas, fiestas y sesiones fotográficas',
-    'services.resort': 'Servicios de Resort',
-    'services.resortDesc': 'Servicios de maquillaje en el lugar para huéspedes y eventos de resort',
+    'services.eventsDesc': 'Maquillaje para fiestas, cumpleaños, graduaciones y más.',
+    'services.resort': 'Servicio en Resorts',
+    'services.resortDesc': 'Maquillaje a domicilio en tu resort o lugar del evento.',
+    'services.homeStudio': 'Estudio Privado',
+    'services.homeStudioDesc': 'Sesiones de maquillaje en nuestro estudio en Punta Cana.',
     
     // How We Work section
     'howWeWork.title': 'Cómo Trabajamos',
     'howWeWork.subtitle': 'Nuestro proceso profesional asegura el look perfecto para tu día especial',
-    'howWeWork.consultation': 'Consulta',
-    'howWeWork.consultationDesc': 'Discutimos tu visión, tipo de piel y detalles del evento',
-    'howWeWork.trial': 'Prueba de Maquillaje',
-    'howWeWork.trialDesc': 'Perfecciona tu look con una sesión de prueba profesional',
-    'howWeWork.eventDay': 'Día del Evento',
-    'howWeWork.eventDayDesc': 'Aplicación impecable y retoques durante todo tu evento',
-    'howWeWork.followUp': 'Seguimiento',
-    'howWeWork.followUpDesc': 'Aseguramos tu completa satisfacción con nuestro servicio',
+    'howWeWork.steps.0.title': 'Consulta inicial',
+    'howWeWork.steps.0.description': 'Hablamos sobre tu estilo, preferencias y detalles del evento',
+    'howWeWork.steps.0.details': 'Durante esta sesión nos alineamos contigo para definir tu look ideal, tipo de piel y ocasión, creando así un plan de maquillaje perfecto.',
+    'howWeWork.steps.1.title': 'Preparación de la piel y selección de productos',
+    'howWeWork.steps.1.description': 'Preparamos tu piel y elegimos los productos ideales',
+    'howWeWork.steps.1.details': 'Tratamos tu piel con cuidado y seleccionamos productos duraderos adaptados a tus necesidades y al clima tropical de República Dominicana.',
+    'howWeWork.steps.2.title': 'Aplicación personalizada',
+    'howWeWork.steps.2.description': 'Damos vida al look de tus sueños',
+    'howWeWork.steps.2.details': 'Aplicamos tu maquillaje con precisión, combinando técnica y arte para resaltar tus rasgos y reflejar tu estilo único.',
+    'howWeWork.steps.3.title': 'Toques finales y fijación',
+    'howWeWork.steps.3.description': 'Finalizamos el look y garantizamos que se mantenga perfecto',
+    'howWeWork.steps.3.details': 'Usamos técnicas profesionales de fijación, ajustes finales y un kit de retoque si es necesario, para que estés radiante todo el día.',
     
     // Partnership section
     'partnership.title': 'Alianzas con Resorts',

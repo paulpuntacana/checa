@@ -1,4 +1,3 @@
-
 import { Star, Award, Heart, Brush } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -8,10 +7,15 @@ const About = () => {
   return (
     <section id="about" className="py-20 bg-warm-white">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="relative">
-            <div className="aspect-[3/4] bg-gradient-glamour rounded-3xl shadow-2xl relative overflow-hidden">
-              <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+          <div className="relative lg:col-span-1">
+            <div className="aspect-[3/4] max-w-[400px] mx-auto bg-gradient-glamour rounded-3xl shadow-2xl relative overflow-hidden">
+              <div className="absolute inset-0 bg-white/10"></div>
+              <img 
+                src="/images/about.png" 
+                alt="Franchesca Martinez Castillo" 
+                className="w-full h-full object-contain"
+              />
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4">
                   <h3 className="font-playfair text-xl font-bold text-foreground mb-1">Franchesca Martinez Castillo</h3>
@@ -28,7 +32,7 @@ const About = () => {
             </div>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-6 lg:col-span-2">
             <div className="flex items-center mb-6">
               <div className="w-12 h-12 bg-gradient-glamour rounded-full flex items-center justify-center mr-4">
                 <Heart className="w-6 h-6 text-white" fill="currentColor" />
