@@ -82,8 +82,11 @@ const Hero = () => {
           : 'bg-transparent'
       }`}>
         <div className="flex items-center justify-between py-3">
-          {/* Logo in top left */}
-          <div>
+          {/* Logo in top left - clickable to scroll to top */}
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="hover:scale-105 transition-transform duration-300"
+          >
             <img 
               src="/images/logo.png" 
               alt="Checa Makeup Logo" 
@@ -91,7 +94,7 @@ const Hero = () => {
                 isScrolled ? 'h-16 lg:h-20' : 'h-20 lg:h-32'
               }`}
             />
-      </div>
+          </button>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
