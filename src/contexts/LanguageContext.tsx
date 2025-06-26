@@ -24,7 +24,7 @@ const translations: Translations = {
     'hero.discoverMore': 'Discover More',
     
     // About section
-    'about.title': 'Professional Makeup Artist',
+    'about.title': 'Professional Bridal & Editorial Makeup Artist',
     'about.meetTitle': 'Meet Franchesca',
     'about.intro': 'With 8 years of professional makeup experience, Franchesca Martinez Castillo has worked with brides from all backgrounds — Dominican, Hindu, American and more. She specializes in long-lasting, radiant looks for every skin tone, tailored to tropical destinations like Punta Cana.',
     'about.experience': '8 Years',
@@ -42,7 +42,7 @@ const translations: Translations = {
     'services.title': 'Our Services',
     'services.subtitle': 'Professional makeup services for all your special occasions',
     'services.bridal': 'Bridal Makeup',
-    'services.bridalDesc': 'Flawless bridal makeup with a pre-wedding trial included.',
+    'services.bridalDesc': 'Flawless bridal looks with professional styling.',
     'services.events': 'Special Occasions',
     'services.eventsDesc': 'Makeup for parties, birthdays, graduations, and more.',
     'services.resort': 'Resort Appointments',
@@ -143,7 +143,7 @@ const translations: Translations = {
       'hero.discoverMore': 'Descubre Más',
     
     // About section
-    'about.title': 'Maquilladora Profesional',
+    'about.title': 'Maquilladora Profesional de Novias y Editorial',
     'about.meetTitle': 'Conoce a Franchesca',
     'about.intro': 'Con 8 años de experiencia en maquillaje profesional, Franchesca Martinez Castillo ha embellecido novias de todo tipo: bodas dominicanas, hindúes, americanas y más. Su especialidad es crear looks duraderos y radiantes para todos los tonos de piel, incluso en climas tropicales exigentes como el de Punta Cana.',
     'about.experience': '8 Años',
@@ -161,7 +161,7 @@ const translations: Translations = {
     'services.title': 'Nuestros Servicios',
     'services.subtitle': 'Servicios profesionales de maquillaje para todas tus ocasiones especiales',
     'services.bridal': 'Maquillaje de Novia',
-    'services.bridalDesc': 'Look de novia perfecto con prueba previa incluida.',
+    'services.bridalDesc': 'Look de novia perfecto con estilo profesional.',
     'services.events': 'Eventos Especiales',
     'services.eventsDesc': 'Maquillaje para fiestas, cumpleaños, graduaciones y más.',
     'services.resort': 'Servicio en Resorts',

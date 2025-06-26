@@ -49,7 +49,7 @@ const HowWeWorkPackages = () => {
             "Makeup touch-up for the bride",
             "Before and after ceremony service"
           ],
-          summary: "✅ All-inclusive: trial, entourage, touch-ups and flexibility."
+          summary: "💎 The most complete package for 8 people - you'll be completely worry-free on your special day."
         },
         {
           name: "Sapphire Package",
@@ -64,7 +64,7 @@ const HowWeWorkPackages = () => {
             "Makeup touch-up before and after the ceremony",
             "Personalized skincare prep (hydration & glow boost)"
           ],
-          summary: "✨ Emphasizes quality & personal care, without team members."
+          summary: "✨ Bride-focused package with personal attention and perfect preparation."
         },
         {
           name: "Ruby Package",
@@ -79,7 +79,7 @@ const HowWeWorkPackages = () => {
             "Basic skin prep (primer, hydration, SPF)",
             "Optional add-on: hair service available on request"
           ],
-          summary: "💎 Ensures completeness without hairstyling, but provides options and clarity."
+          summary: "💖 Essential makeup package for 5 people - everything you need for a beautiful celebration."
         }
       ],
       contactForPricing: "Contact for pricing"
@@ -124,7 +124,7 @@ const HowWeWorkPackages = () => {
             "Retoque de maquillaje para la novia",
             "Servicio antes y después de la ceremonia"
           ],
-          summary: "✅ Todo incluido: prueba, séquito, retoques y flexibilidad."
+          summary: "💎 El paquete más completo para 8 personas - estarás completamente despreocupada en tu día especial."
         },
         {
           name: "Paquete Sapphire",
@@ -139,7 +139,7 @@ const HowWeWorkPackages = () => {
             "Retoque de maquillaje antes y después de la ceremonia",
             "Preparación personalizada de la piel (hidratación y brillo)"
           ],
-          summary: "✨ Enfatiza calidad y cuidado personal, sin miembros del equipo."
+          summary: "✨ Paquete enfocado en la novia con atención personal y preparación perfecta."
         },
         {
           name: "Paquete Ruby",
@@ -154,7 +154,7 @@ const HowWeWorkPackages = () => {
             "Preparación básica de la piel (primer, hidratación, SPF)",
             "Opcional: servicio de peinado disponible bajo solicitud"
           ],
-          summary: "💎 Garantiza completitud sin peinado, pero ofrece opciones y claridad."
+          summary: "💖 Paquete esencial de maquillaje para 5 personas - todo lo que necesitas para una celebración hermosa."
         }
       ],
       contactForPricing: "Contacta para precios"
@@ -258,8 +258,19 @@ const HowWeWorkPackages = () => {
               {t.packages.map((pkg, index) => (
                 <div 
                   key={index}
-                  className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-100 flex flex-col"
+                  className={`group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden flex flex-col ${
+                    index === 0 ? 'border-2 border-purple-200 ring-2 ring-purple-100/50' : 'border border-gray-100'
+                  }`}
                 >
+                  {/* Premium badge for Diamond package */}
+                  {index === 0 && (
+                    <div className="absolute top-3 left-3 z-10">
+                      <div className="bg-[#f4e1ff] text-purple-900 text-xs font-semibold px-3 py-1 rounded-full shadow-lg border border-purple-200">
+                        PREMIUM
+                      </div>
+                    </div>
+                  )}
+                  
                   {/* Package Header */}
                   <div className="relative p-12 text-center overflow-hidden">
                     {/* Background Image with Overlay */}
@@ -267,15 +278,15 @@ const HowWeWorkPackages = () => {
                       <img 
                         src={pkg.bgImage} 
                         alt={pkg.name}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/50 via-purple-800/40 to-purple-900/50"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/40 via-purple-800/30 to-purple-900/40 group-hover:from-purple-600/50 group-hover:via-purple-500/40 group-hover:to-purple-600/50 transition-all duration-300"></div>
                     </div>
                     
                     {/* Content */}
                     <div className="relative z-10">
-                      <h3 className="font-playfair text-xl font-bold text-white mb-1">{pkg.name}</h3>
-                      <p className="text-white/90 text-xs font-medium">{pkg.subtitle}</p>
+                      <h3 className="font-playfair text-xl font-bold text-white mb-1 group-hover:text-purple-100 transition-colors duration-300">{pkg.name}</h3>
+                      <p className="text-white/90 text-xs font-medium group-hover:text-purple-100/90 transition-colors duration-300">{pkg.subtitle}</p>
                     </div>
                   </div>
 
@@ -301,6 +312,21 @@ const HowWeWorkPackages = () => {
               ))}
             </div>
 
+            {/* Custom Package Option */}
+            <div className="bg-gradient-to-r from-purple-50/50 to-lilac-light/30 rounded-xl p-6 mb-8 border border-purple-100">
+              <div className="text-center">
+                <h3 className="font-playfair text-xl font-semibold text-purple-900 mb-3">
+                  {language === 'en' ? 'Create Your Own Package' : 'Crea Tu Propio Paquete'}
+                </h3>
+                <p className="text-muted-foreground text-sm max-w-2xl mx-auto">
+                  {language === 'en'
+                    ? 'Remember that you can also customize your own package! Mix and match services to perfectly fit your needs and vision for your special day.'
+                    : 'Recuerda que también puedes personalizar tu propio paquete. Combina servicios para que se adapte perfectamente a tus necesidades y visión para tu día especial.'
+                  }
+                </p>
+              </div>
+            </div>
+
             {/* Contact for Pricing Button - Full Width */}
             <div>
               <button 
@@ -310,7 +336,7 @@ const HowWeWorkPackages = () => {
                     contactSection.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className="w-full flex items-center justify-center space-x-3 border-2 border-lilac text-purple-800 hover:bg-lilac hover:text-white transition-all duration-300 transform hover:scale-105 font-playfair font-semibold py-4 px-8 rounded-xl bg-white shadow-lg hover:shadow-xl text-lg"
+                className="w-full flex items-center justify-center space-x-3 border-2 border-lilac text-purple-800 hover:bg-lilac hover:text-white transition-all duration-300 transform hover:scale-105 font-semibold py-4 px-8 rounded-xl bg-white shadow-lg hover:shadow-xl text-lg"
               >
                 <MessageCircle className="w-5 h-5" />
                 <span>{t.contactForPricing}</span>

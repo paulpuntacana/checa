@@ -7,6 +7,7 @@ const Hero = () => {
   const { t } = useLanguage();
   const [isVideoHovered, setIsVideoHovered] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   
   const scrollToHowWeWork = () => {
@@ -18,6 +19,13 @@ const Hero = () => {
   };
 
   useEffect(() => {
+    // Scroll detection
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
     // YouTube Player API script
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
@@ -45,21 +53,29 @@ const Hero = () => {
         }
       });
     };
+
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-lilac-light via-warm-white to-purple-soft overflow-hidden py-8">
-      {/* Top Navigation Menu */}
-      <nav className="absolute top-2 left-0 right-0 z-30 px-4 lg:px-32">
-        <div className="flex items-center justify-between">
+      {/* Top Navigation Menu - Transparent at top, visible when scrolling */}
+      <nav className={`fixed top-0 left-0 right-0 z-50 px-4 lg:px-32 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-white/90 backdrop-blur-sm border-b border-purple-100 shadow-sm' 
+          : 'bg-transparent'
+      }`}>
+        <div className="flex items-center justify-between py-3">
           {/* Logo in top left */}
           <div>
             <img 
               src="/images/logo.png" 
               alt="Checa Makeup Logo" 
-              className="h-20 lg:h-32 w-auto drop-shadow-lg"
+              className={`w-auto drop-shadow-lg transition-all duration-300 ${
+                isScrolled ? 'h-16 lg:h-20' : 'h-20 lg:h-32'
+              }`}
             />
-          </div>
+      </div>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
@@ -212,7 +228,9 @@ const Hero = () => {
       <div className="absolute top-40 right-20 w-24 h-0.5 bg-gradient-to-r from-transparent via-lilac/50 to-transparent hidden xl:block transform -rotate-12" style={{animationDelay: '2s'}}></div>
       <div className="absolute bottom-48 left-20 w-20 h-0.5 bg-gradient-to-r from-transparent via-purple-200/70 to-transparent hidden xl:block transform rotate-45" style={{animationDelay: '0.5s'}}></div>
       
-      <div className="container mx-auto px-6 relative z-10 max-w-7xl">
+      <div className={`container mx-auto px-6 relative z-10 max-w-7xl transition-all duration-300 ${
+        isScrolled ? 'pt-24' : 'pt-8'
+      }`}>
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
           {/* Left side - Text content */}
           <div className="animate-fade-in lg:col-span-2 order-1 lg:order-1 mt-16 lg:mt-8 lg:pl-8 xl:pl-16">
@@ -224,7 +242,7 @@ const Hero = () => {
             </span>
               <span className="block bg-gradient-to-r from-lilac to-purple-soft bg-clip-text text-transparent">
                 {t('hero.title3')}
-              </span>
+            </span>
           </h1>
           
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-sm text-center lg:text-left">
@@ -232,25 +250,22 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button 
+            <button 
                 onClick={scrollToHowWeWork}
-              size="lg" 
-                className="bg-purple-700 text-white hover:bg-purple-800 transition-all duration-300 transform hover:scale-105 font-semibold px-8 py-3 shadow-xl border-2 border-white/20"
+                className="w-full border-2 border-lilac text-purple-800 hover:bg-lilac hover:text-white transition-all duration-300 transform hover:scale-105 font-semibold py-3 px-4 bg-white shadow-lg rounded-lg"
             >
                 {t('hero.howWeWork')}
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg"
-                className="border-2 border-lilac text-purple-800 hover:bg-lilac hover:text-white transition-all duration-300 transform hover:scale-105 font-semibold px-8 py-3 bg-white shadow-lg"
+            </button>
+            <button 
+                className="w-full bg-[#f4e1ff] hover:bg-[#f4e1ff]/80 text-purple-900 font-semibold py-3 px-4 rounded-lg transition-colors duration-300 border border-purple-200"
                 onClick={scrollToContact}
               >
                 {t('hero.bookTrial')}
-              </Button>
+              </button>
             </div>
             
             {/* Elegant line under buttons - left aligned */}
-            <div className="hidden xl:flex justify-center lg:justify-start mb-8">
+            <div className="flex justify-center lg:justify-start mb-8">
               <div className="flex items-center justify-center space-x-3 max-w-md">
                 <div className="w-24 h-0.5 bg-gradient-to-r from-purple-400 to-lilac rounded-full"></div>
                 <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse"></div>
@@ -263,12 +278,12 @@ const Hero = () => {
 
           {/* Right side - Video */}
           <div className="relative w-full max-w-xl mx-auto lg:col-span-3 order-2 lg:order-2 flex flex-col justify-center">
-            {/* Horizontal decorative line above video - right aligned, running from right to left */}
-            <div className="hidden xl:flex justify-end mb-6">
+            {/* Horizontal decorative line above video - left aligned */}
+            <div className="hidden lg:flex justify-start mb-6">
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-0.5 bg-gradient-to-l from-purple-400 to-lilac rounded-full"></div>
+                <div className="w-4 h-0.5 bg-gradient-to-r from-purple-300 to-lilac rounded-full"></div>
                 <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
-                <div className="w-4 h-0.5 bg-gradient-to-l from-lilac to-purple-300 rounded-full"></div>
+                <div className="w-8 h-0.5 bg-gradient-to-r from-lilac to-purple-400 rounded-full"></div>
               </div>
             </div>
             
@@ -308,77 +323,167 @@ const Hero = () => {
                 </a>
               </div>
             </div>
-            {/* Large soft purple sunflower corner decoration */}
+            {/* Elegant corner decorations with connecting vine and decorative flourishes */}
             <div className="absolute inset-0 pointer-events-none">
-              {/* Bottom-right corner large sunflower ornament - positioned over video corner */}
-              <div className="absolute -bottom-7 -right-7 w-48 h-48 lg:-bottom-9 lg:-right-9 lg:w-64 lg:h-64">
-                <svg viewBox="0 0 160 160" className="w-full h-full">
-                  <defs>
-                    <linearGradient id="customPurpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style={{stopColor:'#f1e2fd', stopOpacity:0.9}} />
-                      <stop offset="33%" style={{stopColor:'#dab5fa', stopOpacity:0.95}} />
-                      <stop offset="66%" style={{stopColor:'#7329c6', stopOpacity:1}} />
-                      <stop offset="100%" style={{stopColor:'#512082', stopOpacity:1}} />
-                    </linearGradient>
-                  </defs>
-                  
-                  <g fill="url(#customPurpleGradient)">
-                    {/* Main decorative corner curves */}
-                    <path d="M120 160 Q160 160 160 120 Q160 110 150 115 Q140 120 130 130 Q120 140 115 150 Q110 160 120 160 Z" stroke="#7329c6" stroke-width="2" fill="none" />
-                    <path d="M100 160 Q120 160 130 140 Q140 120 160 100" stroke="#dab5fa" stroke-width="1" fill="none" />
+              {/* Top right corner decoration with 3 flowers */}
+              <div className="absolute top-0 right-0 w-24 h-24 lg:w-28 lg:h-28 transform translate-x-4 -translate-y-1 lg:translate-x-6 lg:translate-y-3">
+                <svg viewBox="0 0 120 120" className="w-full h-full" style={{ overflow: 'visible' }}>
+                  <g>
                     
-                    {/* Large main sunflower */}
-                    <g transform="translate(125, 125)">
-                      {/* Sunflower petals - larger */}
-                      <ellipse cx="0" cy="-12" rx="3" ry="9" fill="#dab5fa" />
-                      <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(30)" fill="#f1e2fd" />
-                      <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(60)" fill="#dab5fa" />
-                      <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(90)" fill="#f1e2fd" />
-                      <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(120)" fill="#dab5fa" />
-                      <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(150)" fill="#f1e2fd" />
-                      <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(180)" fill="#dab5fa" />
-                      <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(210)" fill="#f1e2fd" />
-                      <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(240)" fill="#dab5fa" />
-                      <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(270)" fill="#f1e2fd" />
-                      <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(300)" fill="#dab5fa" />
-                      <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(330)" fill="#f1e2fd" />
-                      {/* Center */}
-                      <circle cx="0" cy="0" r="7" fill="#512082" />
+                    {/* Main corner flower - larger and positioned at exact corner */}
+                    <g transform="translate(95, 25)">
+                      <ellipse cx="0" cy="-18" rx="4" ry="10" fill="#dab5fa" />
+                      <ellipse cx="0" cy="-18" rx="4" ry="10" fill="#f1e2fd" transform="rotate(30)" />
+                      <ellipse cx="0" cy="-18" rx="4" ry="10" fill="#dab5fa" transform="rotate(60)" />
+                      <ellipse cx="0" cy="-18" rx="4" ry="10" fill="#f1e2fd" transform="rotate(90)" />
+                      <ellipse cx="0" cy="-18" rx="4" ry="10" fill="#dab5fa" transform="rotate(120)" />
+                      <ellipse cx="0" cy="-18" rx="4" ry="10" fill="#f1e2fd" transform="rotate(150)" />
+                      <ellipse cx="0" cy="-18" rx="4" ry="10" fill="#dab5fa" transform="rotate(180)" />
+                      <ellipse cx="0" cy="-18" rx="4" ry="10" fill="#f1e2fd" transform="rotate(210)" />
+                      <ellipse cx="0" cy="-18" rx="4" ry="10" fill="#dab5fa" transform="rotate(240)" />
+                      <ellipse cx="0" cy="-18" rx="4" ry="10" fill="#f1e2fd" transform="rotate(270)" />
+                      <ellipse cx="0" cy="-18" rx="4" ry="10" fill="#dab5fa" transform="rotate(300)" />
+                      <ellipse cx="0" cy="-18" rx="4" ry="10" fill="#f1e2fd" transform="rotate(330)" />
+                      <circle cx="0" cy="0" r="9" fill="#512082" />
                     </g>
                     
-                    {/* Medium sunflower */}
-                    <g transform="translate(95, 135)">
-                      <ellipse cx="0" cy="-8" rx="2" ry="6" fill="#dab5fa" />
-                      <ellipse cx="0" cy="-8" rx="2" ry="6" transform="rotate(45)" fill="#f1e2fd" />
-                      <ellipse cx="0" cy="-8" rx="2" ry="6" transform="rotate(90)" fill="#dab5fa" />
-                      <ellipse cx="0" cy="-8" rx="2" ry="6" transform="rotate(135)" fill="#f1e2fd" />
-                      <ellipse cx="0" cy="-8" rx="2" ry="6" transform="rotate(180)" fill="#dab5fa" />
-                      <ellipse cx="0" cy="-8" rx="2" ry="6" transform="rotate(225)" fill="#f1e2fd" />
-                      <ellipse cx="0" cy="-8" rx="2" ry="6" transform="rotate(270)" fill="#dab5fa" />
-                      <ellipse cx="0" cy="-8" rx="2" ry="6" transform="rotate(315)" fill="#f1e2fd" />
-                      <circle cx="0" cy="0" r="4" fill="#512082" />
+
+                    
+                    {/* Second flower - larger */}
+                    <g transform="translate(50, 45)">
+                      <ellipse cx="0" cy="-12" rx="3" ry="7" fill="#f1e2fd" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="7" fill="#dab5fa" transform="rotate(45)" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="7" fill="#f1e2fd" transform="rotate(90)" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="7" fill="#dab5fa" transform="rotate(135)" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="7" fill="#f1e2fd" transform="rotate(180)" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="7" fill="#dab5fa" transform="rotate(225)" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="7" fill="#f1e2fd" transform="rotate(270)" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="7" fill="#dab5fa" transform="rotate(315)" />
+                      <circle cx="0" cy="0" r="6" fill="#512082" />
                     </g>
                     
-                    {/* Small sunflower */}
-                    <g transform="translate(135, 95)">
-                      <ellipse cx="0" cy="-6" rx="1.5" ry="4" fill="#dab5fa" />
-                      <ellipse cx="0" cy="-6" rx="1.5" ry="4" transform="rotate(60)" fill="#f1e2fd" />
-                      <ellipse cx="0" cy="-6" rx="1.5" ry="4" transform="rotate(120)" fill="#dab5fa" />
-                      <ellipse cx="0" cy="-6" rx="1.5" ry="4" transform="rotate(180)" fill="#f1e2fd" />
-                      <ellipse cx="0" cy="-6" rx="1.5" ry="4" transform="rotate(240)" fill="#dab5fa" />
-                      <ellipse cx="0" cy="-6" rx="1.5" ry="4" transform="rotate(300)" fill="#f1e2fd" />
-                      <circle cx="0" cy="0" r="3" fill="#512082" />
+
+                    
+                    {/* Third flower - larger */}
+                    <g transform="translate(75, 75)">
+                      <ellipse cx="0" cy="-10" rx="2.5" ry="6" fill="#dab5fa" />
+                      <ellipse cx="0" cy="-10" rx="2.5" ry="6" fill="#f1e2fd" transform="rotate(60)" />
+                      <ellipse cx="0" cy="-10" rx="2.5" ry="6" fill="#dab5fa" transform="rotate(120)" />
+                      <ellipse cx="0" cy="-10" rx="2.5" ry="6" fill="#f1e2fd" transform="rotate(180)" />
+                      <ellipse cx="0" cy="-10" rx="2.5" ry="6" fill="#dab5fa" transform="rotate(240)" />
+                      <ellipse cx="0" cy="-10" rx="2.5" ry="6" fill="#f1e2fd" transform="rotate(300)" />
+                      <circle cx="0" cy="0" r="5" fill="#512082" />
                     </g>
                     
-                    {/* Decorative leaves and swirls */}
-                    <path d="M110 140 Q105 135 110 130 Q115 135 110 140" fill="#7329c6" />
-                    <path d="M140 110 Q135 105 140 100 Q145 105 140 110" fill="#dab5fa" />
-                    <ellipse cx="115" cy="132" rx="1.5" ry="5" transform="rotate(-30 115 132)" fill="#f1e2fd" />
-                    <ellipse cx="132" cy="115" rx="1.5" ry="5" transform="rotate(30 132 115)" fill="#7329c6" />
+
+                  </g>
+                </svg>
+              </div>
+              
+              {/* Connecting decorative vine between corners */}
+              <div className="absolute top-0 right-0 w-16 h-full transform translate-x-2 lg:translate-x-3">
+                <svg viewBox="0 0 64 400" className="w-full h-full" preserveAspectRatio="none">
+                  <g>
+                    {/* Main elegant vine connecting top to bottom */}
+                    <path d="M50 80 Q30 120 40 160 Q55 200 35 240 Q25 280 45 320 Q55 360 40 380" 
+                          stroke="#dab5fa" stroke-width="2.5" fill="none" opacity="0.7" />
                     
-                    {/* Extra decorative swirls */}
-                    <path d="M80 150 Q90 145 100 150 Q110 155 120 150" stroke="#dab5fa" stroke-width="2" fill="none" />
-                    <path d="M150 80 Q145 90 150 100 Q155 110 150 120" stroke="#7329c6" stroke-width="2" fill="none" />
+                    <path d="M47 85 Q27 125 37 165 Q52 205 32 245 Q22 285 42 325 Q52 365 37 380" 
+                          stroke="#f1e2fd" stroke-width="1.5" fill="none" opacity="0.8" />
+                    
+                                         {/* Larger graceful leaves along the vine */}
+                     <g transform="translate(32, 120) rotate(-25)">
+                       <ellipse cx="0" cy="0" rx="5" ry="12" fill="#dab5fa" opacity="0.6" />
+                       <ellipse cx="0" cy="0" rx="2.5" ry="8" fill="#f1e2fd" opacity="0.7" />
+                     </g>
+                     
+                     <g transform="translate(50, 160) rotate(20)">
+                       <ellipse cx="0" cy="0" rx="4" ry="10" fill="#f1e2fd" opacity="0.6" />
+                       <ellipse cx="0" cy="0" rx="2" ry="6" fill="#dab5fa" opacity="0.7" />
+                     </g>
+                     
+                     <g transform="translate(28, 200) rotate(-35)">
+                       <ellipse cx="0" cy="0" rx="5" ry="14" fill="#dab5fa" opacity="0.6" />
+                       <ellipse cx="0" cy="0" rx="2.5" ry="10" fill="#f1e2fd" opacity="0.7" />
+                     </g>
+                     
+                     <g transform="translate(45, 240) rotate(15)">
+                       <ellipse cx="0" cy="0" rx="4" ry="11" fill="#f1e2fd" opacity="0.6" />
+                       <ellipse cx="0" cy="0" rx="2" ry="7" fill="#dab5fa" opacity="0.7" />
+                     </g>
+                     
+                     <g transform="translate(30, 280) rotate(-20)">
+                       <ellipse cx="0" cy="0" rx="4.5" ry="12" fill="#dab5fa" opacity="0.6" />
+                       <ellipse cx="0" cy="0" rx="2" ry="8" fill="#f1e2fd" opacity="0.7" />
+                     </g>
+                    
+                    {/* Small decorative flourishes */}
+                    <g transform="translate(20, 140) rotate(-15)">
+                      <ellipse cx="0" cy="0" rx="1" ry="3" fill="#f1e2fd" opacity="0.5" />
+                    </g>
+                    
+                    <g transform="translate(15, 220) rotate(25)">
+                      <ellipse cx="0" cy="0" rx="1.5" ry="4" fill="#dab5fa" opacity="0.5" />
+                    </g>
+                    
+                    <g transform="translate(18, 300) rotate(-10)">
+                      <ellipse cx="0" cy="0" rx="1" ry="3" fill="#f1e2fd" opacity="0.5" />
+                    </g>
+                  </g>
+                </svg>
+              </div>
+
+              {/* Bottom right corner decoration with 3 flowers */}
+              <div className="absolute bottom-0 right-0 w-44 h-44 lg:w-48 lg:h-48 transform translate-x-4 translate-y-4 lg:translate-x-5 lg:translate-y-5">
+                <svg viewBox="0 0 220 220" className="w-full h-full" style={{ overflow: 'visible' }}>
+                  <g>
+                    
+                    {/* Main corner flower - larger and positioned at exact corner */}
+                    <g transform="translate(190, 190)">
+                      <ellipse cx="0" cy="-22" rx="5" ry="12" fill="#dab5fa" />
+                      <ellipse cx="0" cy="-22" rx="5" ry="12" fill="#f1e2fd" transform="rotate(30)" />
+                      <ellipse cx="0" cy="-22" rx="5" ry="12" fill="#dab5fa" transform="rotate(60)" />
+                      <ellipse cx="0" cy="-22" rx="5" ry="12" fill="#f1e2fd" transform="rotate(90)" />
+                      <ellipse cx="0" cy="-22" rx="5" ry="12" fill="#dab5fa" transform="rotate(120)" />
+                      <ellipse cx="0" cy="-22" rx="5" ry="12" fill="#f1e2fd" transform="rotate(150)" />
+                      <ellipse cx="0" cy="-22" rx="5" ry="12" fill="#dab5fa" transform="rotate(180)" />
+                      <ellipse cx="0" cy="-22" rx="5" ry="12" fill="#f1e2fd" transform="rotate(210)" />
+                      <ellipse cx="0" cy="-22" rx="5" ry="12" fill="#dab5fa" transform="rotate(240)" />
+                      <ellipse cx="0" cy="-22" rx="5" ry="12" fill="#f1e2fd" transform="rotate(270)" />
+                      <ellipse cx="0" cy="-22" rx="5" ry="12" fill="#dab5fa" transform="rotate(300)" />
+                      <ellipse cx="0" cy="-22" rx="5" ry="12" fill="#f1e2fd" transform="rotate(330)" />
+                      <circle cx="0" cy="0" r="11" fill="#512082" />
+                    </g>
+                    
+
+                    
+                    {/* Second flower - larger */}
+                    <g transform="translate(160, 140)">
+                      <ellipse cx="0" cy="-12" rx="3" ry="7" fill="#f1e2fd" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="7" fill="#dab5fa" transform="rotate(45)" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="7" fill="#f1e2fd" transform="rotate(90)" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="7" fill="#dab5fa" transform="rotate(135)" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="7" fill="#f1e2fd" transform="rotate(180)" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="7" fill="#dab5fa" transform="rotate(225)" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="7" fill="#f1e2fd" transform="rotate(270)" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="7" fill="#dab5fa" transform="rotate(315)" />
+                      <circle cx="0" cy="0" r="6" fill="#512082" />
+                    </g>
+                    
+
+                    
+                    {/* Third flower - larger */}
+                    <g transform="translate(140, 175)">
+                      <ellipse cx="0" cy="-10" rx="2.5" ry="6" fill="#dab5fa" />
+                      <ellipse cx="0" cy="-10" rx="2.5" ry="6" fill="#f1e2fd" transform="rotate(60)" />
+                      <ellipse cx="0" cy="-10" rx="2.5" ry="6" fill="#dab5fa" transform="rotate(120)" />
+                      <ellipse cx="0" cy="-10" rx="2.5" ry="6" fill="#f1e2fd" transform="rotate(180)" />
+                      <ellipse cx="0" cy="-10" rx="2.5" ry="6" fill="#dab5fa" transform="rotate(240)" />
+                      <ellipse cx="0" cy="-10" rx="2.5" ry="6" fill="#f1e2fd" transform="rotate(300)" />
+                      <circle cx="0" cy="0" r="5" fill="#512082" />
+                    </g>
+                    
+
                   </g>
                 </svg>
               </div>
