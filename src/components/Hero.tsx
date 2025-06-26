@@ -63,7 +63,7 @@ const Hero = () => {
       <div className="container mx-auto px-6 relative z-10 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
           {/* Left side - Text content */}
-          <div className="animate-fade-in lg:col-span-2 order-1 lg:order-1 lg:mt-8 lg:pl-8 xl:pl-16">
+          <div className="animate-fade-in lg:col-span-2 order-1 lg:order-1 mt-16 lg:mt-8 lg:pl-8 xl:pl-16">
           
             <h1 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight drop-shadow-sm text-center lg:text-left">
             {t('hero.title1')}
@@ -132,8 +132,9 @@ const Hero = () => {
                 ref={iframeRef}
                 src="https://www.youtube.com/embed/7PFpO1XeycE?start=10&end=134&autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&fs=0&disablekb=1&vq=hd1080&enablejsapi=1"
                 title="Checa Makeup Video"
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover border-0"
                 frameBorder="0"
+                style={{ border: 'none', outline: 'none' }}
                 allow="autoplay; encrypted-media"
                 allowFullScreen
               />
