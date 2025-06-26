@@ -7,7 +7,6 @@ import Reviews from "@/components/Reviews";
 import Portfolio from "@/components/Portfolio";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import LanguageToggle from "@/components/LanguageToggle";
 import SEOHead from "@/components/SEOHead";
 import SEOSchema from "@/components/SEOSchema";
 
@@ -16,7 +15,6 @@ const Index = () => {
       <div className="min-h-screen">
       <SEOHead />
       <SEOSchema />
-        <LanguageToggle />
         <Hero />
       <Services />
       <Portfolio />

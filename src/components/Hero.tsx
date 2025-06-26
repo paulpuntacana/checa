@@ -1,11 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Sun, TreePalm, Brush, Play } from "lucide-react";
+import { ArrowDown, Sun, TreePalm, Brush, Play, Menu, X } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useState, useEffect, useRef } from "react";
 
 const Hero = () => {
   const { t } = useLanguage();
   const [isVideoHovered, setIsVideoHovered] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   
   const scrollToHowWeWork = () => {
@@ -48,14 +49,165 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-lilac-light via-warm-white to-purple-soft overflow-hidden py-8">
-      {/* Logo in top left */}
-      <div className="absolute top-2 left-2 lg:top-12 lg:left-32 z-20">
-        <img 
-          src="/images/logo.png" 
-          alt="Checa Makeup Logo" 
-          className="h-20 lg:h-32 w-auto drop-shadow-lg"
-        />
-      </div>
+      {/* Top Navigation Menu */}
+      <nav className="absolute top-2 left-0 right-0 z-30 px-4 lg:px-32">
+        <div className="flex items-center justify-between">
+          {/* Logo in top left */}
+          <div>
+            <img 
+              src="/images/logo.png" 
+              alt="Checa Makeup Logo" 
+              className="h-20 lg:h-32 w-auto drop-shadow-lg"
+            />
+          </div>
+          
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            <button 
+              onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+              className="text-gray-600 hover:text-purple-900 font-medium transition-colors duration-300 text-sm"
+            >
+              {t('language.english') === 'English' ? 'Services' : 'Servicios'}
+            </button>
+            <button 
+              onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
+              className="text-gray-600 hover:text-purple-900 font-medium transition-colors duration-300 text-sm"
+            >
+              Portfolio
+            </button>
+            <button 
+              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+              className="text-gray-600 hover:text-purple-900 font-medium transition-colors duration-300 text-sm"
+            >
+              {t('language.english') === 'English' ? 'About' : 'Acerca'}
+            </button>
+            <button 
+              onClick={() => document.getElementById('how-we-work-packages')?.scrollIntoView({ behavior: 'smooth' })}
+              className="text-gray-600 hover:text-purple-900 font-medium transition-colors duration-300 text-sm"
+            >
+              {t('language.english') === 'English' ? 'Packages' : 'Paquetes'}
+            </button>
+            <button 
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-[#f4e1ff] text-purple-900 px-6 py-2 rounded-full hover:bg-purple-200 transition-all duration-300 font-medium text-sm border border-purple-200"
+            >
+              {t('language.english') === 'English' ? 'Contact' : 'Contacto'}
+            </button>
+            
+            {/* Language Toggle integrated in menu */}
+            <div className="flex items-center bg-white/90 backdrop-blur-sm border border-purple-300 rounded-full p-1">
+              <button
+                onClick={() => window.location.href = '/en'}
+                className={`px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 ${
+                  t('language.english') === 'English'
+                    ? 'bg-[#f4e1ff] text-purple-900'
+                    : 'text-gray-600 hover:text-purple-900'
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => window.location.href = '/es'}
+                className={`px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 ${
+                  t('language.english') !== 'English'
+                    ? 'bg-[#f4e1ff] text-purple-900'
+                    : 'text-gray-600 hover:text-purple-900'
+                }`}
+              >
+                ES
+              </button>
+            </div>
+          </div>
+          
+          {/* Mobile Hamburger Menu */}
+          <div className="md:hidden flex items-center space-x-4">
+            {/* Language Toggle for Mobile */}
+            <div className="flex items-center bg-white/90 backdrop-blur-sm border border-purple-300 rounded-full p-1">
+              <button
+                onClick={() => window.location.href = '/en'}
+                className={`px-2 py-1 rounded-full text-xs font-medium transition-all duration-300 ${
+                  t('language.english') === 'English'
+                    ? 'bg-[#f4e1ff] text-purple-900'
+                    : 'text-gray-600 hover:text-purple-900'
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => window.location.href = '/es'}
+                className={`px-2 py-1 rounded-full text-xs font-medium transition-all duration-300 ${
+                  t('language.english') !== 'English'
+                    ? 'bg-[#f4e1ff] text-purple-900'
+                    : 'text-gray-600 hover:text-purple-900'
+                }`}
+              >
+                ES
+              </button>
+            </div>
+            
+            {/* Hamburger Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="bg-[#f4e1ff] text-purple-900 p-2 rounded-full hover:bg-purple-200 transition-colors duration-300 border border-purple-200"
+            >
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
+          
+          {/* Mobile Menu Dropdown */}
+          {isMobileMenuOpen && (
+            <div className="absolute top-full left-0 right-0 mt-2 bg-white/95 backdrop-blur-sm border border-purple-200 rounded-xl shadow-lg md:hidden z-40 mx-4">
+              <div className="flex flex-col space-y-4 p-6">
+                <button 
+                  onClick={() => {
+                    document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="text-gray-600 hover:text-purple-900 font-medium transition-colors duration-300 text-left"
+                >
+                  {t('language.english') === 'English' ? 'Services' : 'Servicios'}
+                </button>
+                <button 
+                  onClick={() => {
+                    document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="text-gray-600 hover:text-purple-900 font-medium transition-colors duration-300 text-left"
+                >
+                  Portfolio
+                </button>
+                <button 
+                  onClick={() => {
+                    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="text-gray-600 hover:text-purple-900 font-medium transition-colors duration-300 text-left"
+                >
+                  {t('language.english') === 'English' ? 'About' : 'Acerca'}
+                </button>
+                <button 
+                  onClick={() => {
+                    document.getElementById('how-we-work-packages')?.scrollIntoView({ behavior: 'smooth' });
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="text-gray-600 hover:text-purple-900 font-medium transition-colors duration-300 text-left"
+                >
+                  {t('language.english') === 'English' ? 'Packages' : 'Paquetes'}
+                </button>
+                <button 
+                  onClick={() => {
+                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="bg-[#f4e1ff] text-purple-900 px-6 py-3 rounded-full hover:bg-purple-200 transition-all duration-300 font-medium border border-purple-200 text-center"
+                >
+                  {t('language.english') === 'English' ? 'Contact' : 'Contacto'}
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      </nav>
       {/* Elegant decorative elements - Hidden on all mobile devices */}
       <div className="absolute top-40 right-20 w-24 h-0.5 bg-gradient-to-r from-transparent via-lilac/50 to-transparent hidden xl:block transform -rotate-12" style={{animationDelay: '2s'}}></div>
       <div className="absolute bottom-48 left-20 w-20 h-0.5 bg-gradient-to-r from-transparent via-purple-200/70 to-transparent hidden xl:block transform rotate-45" style={{animationDelay: '0.5s'}}></div>
@@ -156,52 +308,80 @@ const Hero = () => {
                 </a>
               </div>
             </div>
-            {/* Sunflower on corner of video - more realistic */}
-            <div className="absolute -bottom-6 -right-8 w-16 h-16 lg:-bottom-8 lg:-right-10 lg:w-20 lg:h-20 transform rotate-15">
-              <svg viewBox="0 0 100 100" className="w-full h-full">
-                {/* Outer petals */}
-                <g fill="#FFD700">
-                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(0 50 50)"/>
-                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(22.5 50 50)"/>
-                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(45 50 50)"/>
-                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(67.5 50 50)"/>
-                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(90 50 50)"/>
-                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(112.5 50 50)"/>
-                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(135 50 50)"/>
-                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(157.5 50 50)"/>
-                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(180 50 50)"/>
-                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(202.5 50 50)"/>
-                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(225 50 50)"/>
-                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(247.5 50 50)"/>
-                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(270 50 50)"/>
-                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(292.5 50 50)"/>
-                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(315 50 50)"/>
-                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(337.5 50 50)"/>
-                </g>
-                {/* Inner petals */}
-                <g fill="#FFA500">
-                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(11.25 50 50)"/>
-                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(33.75 50 50)"/>
-                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(56.25 50 50)"/>
-                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(78.75 50 50)"/>
-                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(101.25 50 50)"/>
-                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(123.75 50 50)"/>
-                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(146.25 50 50)"/>
-                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(168.75 50 50)"/>
-                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(191.25 50 50)"/>
-                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(213.75 50 50)"/>
-                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(236.25 50 50)"/>
-                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(258.75 50 50)"/>
-                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(281.25 50 50)"/>
-                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(303.75 50 50)"/>
-                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(326.25 50 50)"/>
-                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(348.75 50 50)"/>
-                </g>
-                {/* Center with gradient effect */}
-                <circle cx="50" cy="50" r="16" fill="#654321"/>
-                <circle cx="50" cy="50" r="12" fill="#8B4513"/>
-                <circle cx="50" cy="50" r="8" fill="#A0522D"/>
-              </svg>
+            {/* Large soft purple sunflower corner decoration */}
+            <div className="absolute inset-0 pointer-events-none">
+              {/* Bottom-right corner large sunflower ornament - positioned over video corner */}
+              <div className="absolute -bottom-7 -right-7 w-48 h-48 lg:-bottom-9 lg:-right-9 lg:w-64 lg:h-64">
+                <svg viewBox="0 0 160 160" className="w-full h-full">
+                  <defs>
+                    <linearGradient id="customPurpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style={{stopColor:'#f1e2fd', stopOpacity:0.9}} />
+                      <stop offset="33%" style={{stopColor:'#dab5fa', stopOpacity:0.95}} />
+                      <stop offset="66%" style={{stopColor:'#7329c6', stopOpacity:1}} />
+                      <stop offset="100%" style={{stopColor:'#512082', stopOpacity:1}} />
+                    </linearGradient>
+                  </defs>
+                  
+                  <g fill="url(#customPurpleGradient)">
+                    {/* Main decorative corner curves */}
+                    <path d="M120 160 Q160 160 160 120 Q160 110 150 115 Q140 120 130 130 Q120 140 115 150 Q110 160 120 160 Z" stroke="#7329c6" stroke-width="2" fill="none" />
+                    <path d="M100 160 Q120 160 130 140 Q140 120 160 100" stroke="#dab5fa" stroke-width="1" fill="none" />
+                    
+                    {/* Large main sunflower */}
+                    <g transform="translate(125, 125)">
+                      {/* Sunflower petals - larger */}
+                      <ellipse cx="0" cy="-12" rx="3" ry="9" fill="#dab5fa" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(30)" fill="#f1e2fd" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(60)" fill="#dab5fa" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(90)" fill="#f1e2fd" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(120)" fill="#dab5fa" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(150)" fill="#f1e2fd" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(180)" fill="#dab5fa" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(210)" fill="#f1e2fd" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(240)" fill="#dab5fa" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(270)" fill="#f1e2fd" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(300)" fill="#dab5fa" />
+                      <ellipse cx="0" cy="-12" rx="3" ry="9" transform="rotate(330)" fill="#f1e2fd" />
+                      {/* Center */}
+                      <circle cx="0" cy="0" r="7" fill="#512082" />
+                    </g>
+                    
+                    {/* Medium sunflower */}
+                    <g transform="translate(95, 135)">
+                      <ellipse cx="0" cy="-8" rx="2" ry="6" fill="#dab5fa" />
+                      <ellipse cx="0" cy="-8" rx="2" ry="6" transform="rotate(45)" fill="#f1e2fd" />
+                      <ellipse cx="0" cy="-8" rx="2" ry="6" transform="rotate(90)" fill="#dab5fa" />
+                      <ellipse cx="0" cy="-8" rx="2" ry="6" transform="rotate(135)" fill="#f1e2fd" />
+                      <ellipse cx="0" cy="-8" rx="2" ry="6" transform="rotate(180)" fill="#dab5fa" />
+                      <ellipse cx="0" cy="-8" rx="2" ry="6" transform="rotate(225)" fill="#f1e2fd" />
+                      <ellipse cx="0" cy="-8" rx="2" ry="6" transform="rotate(270)" fill="#dab5fa" />
+                      <ellipse cx="0" cy="-8" rx="2" ry="6" transform="rotate(315)" fill="#f1e2fd" />
+                      <circle cx="0" cy="0" r="4" fill="#512082" />
+                    </g>
+                    
+                    {/* Small sunflower */}
+                    <g transform="translate(135, 95)">
+                      <ellipse cx="0" cy="-6" rx="1.5" ry="4" fill="#dab5fa" />
+                      <ellipse cx="0" cy="-6" rx="1.5" ry="4" transform="rotate(60)" fill="#f1e2fd" />
+                      <ellipse cx="0" cy="-6" rx="1.5" ry="4" transform="rotate(120)" fill="#dab5fa" />
+                      <ellipse cx="0" cy="-6" rx="1.5" ry="4" transform="rotate(180)" fill="#f1e2fd" />
+                      <ellipse cx="0" cy="-6" rx="1.5" ry="4" transform="rotate(240)" fill="#dab5fa" />
+                      <ellipse cx="0" cy="-6" rx="1.5" ry="4" transform="rotate(300)" fill="#f1e2fd" />
+                      <circle cx="0" cy="0" r="3" fill="#512082" />
+                    </g>
+                    
+                    {/* Decorative leaves and swirls */}
+                    <path d="M110 140 Q105 135 110 130 Q115 135 110 140" fill="#7329c6" />
+                    <path d="M140 110 Q135 105 140 100 Q145 105 140 110" fill="#dab5fa" />
+                    <ellipse cx="115" cy="132" rx="1.5" ry="5" transform="rotate(-30 115 132)" fill="#f1e2fd" />
+                    <ellipse cx="132" cy="115" rx="1.5" ry="5" transform="rotate(30 132 115)" fill="#7329c6" />
+                    
+                    {/* Extra decorative swirls */}
+                    <path d="M80 150 Q90 145 100 150 Q110 155 120 150" stroke="#dab5fa" stroke-width="2" fill="none" />
+                    <path d="M150 80 Q145 90 150 100 Q155 110 150 120" stroke="#7329c6" stroke-width="2" fill="none" />
+                  </g>
+                </svg>
+              </div>
             </div>
           </div>
         </div>
