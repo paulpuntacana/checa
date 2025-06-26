@@ -222,7 +222,7 @@ const Services = () => {
             <div className="w-16 h-0.5 bg-gradient-to-l from-transparent to-purple-300 ml-4"></div>
           </div>
           
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-6 bg-gradient-to-r from-purple-900 to-purple-700 bg-clip-text text-transparent">
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-6">
             {t('services.title')}
           </h2>
           
