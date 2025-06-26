@@ -49,38 +49,21 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-lilac-light via-warm-white to-purple-soft overflow-hidden py-8">
       {/* Logo in top left */}
-      <div className="absolute top-4 left-4 lg:top-12 lg:left-32 z-20 lg:animate-float">
+      <div className="absolute top-2 left-2 lg:top-12 lg:left-32 z-20">
         <img 
           src="/images/logo.png" 
           alt="Checa Makeup Logo" 
-          className="h-32 lg:h-40 w-auto drop-shadow-lg"
+          className="h-16 lg:h-40 w-auto drop-shadow-lg"
         />
       </div>
-      {/* Makeup-themed decorative elements - hidden on mobile */}
-      <div className="absolute top-16 left-8 w-20 h-20 bg-gradient-glamour rounded-full animate-float flex items-center justify-center shadow-lg hidden lg:flex">
-        <Brush className="w-10 h-10 text-white" />
-      </div>
-      <div className="absolute top-32 right-16 w-24 h-24 bg-sunflower/80 rounded-full animate-float flex items-center justify-center shadow-lg hidden lg:flex" style={{animationDelay: '1s'}}>
-        <Sun className="w-12 h-12 text-white" />
-      </div>
-      <div className="absolute top-20 left-1/3 w-16 h-16 bg-palm-green/70 rounded-full animate-float flex items-center justify-center shadow-lg hidden lg:flex" style={{animationDelay: '2s'}}>
-        <TreePalm className="w-8 h-8 text-white" />
-      </div>
-      <div className="absolute bottom-40 right-1/4 w-18 h-18 bg-gradient-accent rounded-full animate-float flex items-center justify-center shadow-lg hidden lg:flex" style={{animationDelay: '0.5s'}}>
-        <Brush className="w-9 h-9 text-white" />
-      </div>
-      <div className="absolute bottom-32 left-16 w-14 h-14 bg-lilac/60 rounded-full animate-float shadow-lg hidden lg:block" style={{animationDelay: '1.5s'}}></div>
-      <div className="absolute top-64 right-32 w-12 h-12 bg-sunflower/40 rounded-full animate-float shadow-lg hidden lg:block" style={{animationDelay: '2.5s'}}></div>
+      {/* Elegant decorative elements */}
+      <div className="absolute top-40 right-20 w-24 h-0.5 bg-gradient-to-r from-transparent via-lilac/50 to-transparent hidden lg:block transform -rotate-12" style={{animationDelay: '2s'}}></div>
+      <div className="absolute bottom-48 left-20 w-20 h-0.5 bg-gradient-to-r from-transparent via-purple-200/70 to-transparent hidden lg:block transform rotate-45" style={{animationDelay: '0.5s'}}></div>
       
       <div className="container mx-auto px-6 relative z-10 max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center justify-center">
           {/* Left side - Text content */}
-          <div className="animate-fade-in lg:col-span-2 order-1 lg:order-1">
-            <div className="hidden lg:flex justify-center lg:justify-start mb-6">
-              <div className="w-16 h-16 bg-gradient-glamour rounded-full flex items-center justify-center animate-pulse shadow-xl border-4 border-white/30">
-                <Brush className="w-8 h-8 text-white" />
-              </div>
-            </div>
+          <div className="animate-fade-in lg:col-span-2 order-1 lg:order-1 lg:mt-8">
             
             <h1 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight drop-shadow-sm text-center lg:text-left">
               {t('hero.title1')}
@@ -113,12 +96,33 @@ const Hero = () => {
                 {t('hero.bookTrial')}
               </Button>
             </div>
+            
+            {/* Elegant line under buttons - left aligned */}
+            <div className="hidden lg:flex justify-center lg:justify-start mb-8">
+              <div className="flex items-center justify-center space-x-3 max-w-md">
+                <div className="w-24 h-0.5 bg-gradient-to-r from-purple-400 to-lilac rounded-full"></div>
+                <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse"></div>
+                <div className="w-32 h-0.5 bg-gradient-to-r from-lilac to-purple-300 rounded-full"></div>
+                <div className="w-2 h-2 bg-lilac rounded-full animate-pulse"></div>
+                <div className="w-20 h-0.5 bg-gradient-to-r from-purple-300 to-purple-200 rounded-full"></div>
+              </div>
+            </div>
           </div>
 
           {/* Right side - Video */}
           <div className="relative w-full max-w-xl mx-auto lg:mx-0 lg:col-span-3 order-2 lg:order-2 block">
+            {/* Horizontal decorative line above video - right aligned, running from right to left */}
+            <div className="hidden lg:flex justify-end mb-6">
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-0.5 bg-gradient-to-l from-purple-400 to-lilac rounded-full"></div>
+                <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
+                <div className="w-4 h-0.5 bg-gradient-to-l from-lilac to-purple-300 rounded-full"></div>
+              </div>
+            </div>
+            
             <div 
-              className="aspect-video w-full bg-gradient-glamour rounded-3xl shadow-2xl relative overflow-hidden cursor-pointer"
+              className="aspect-video w-full bg-gradient-glamour shadow-2xl relative overflow-hidden cursor-pointer"
+              style={{ borderRadius: '24px 0 24px 24px' }}
               onMouseEnter={() => setIsVideoHovered(true)}
               onMouseLeave={() => setIsVideoHovered(false)}
             >
@@ -151,12 +155,52 @@ const Hero = () => {
                 </a>
               </div>
             </div>
-            {/* Decorative elements */}
-            <div className="absolute -top-4 -right-4 w-10 h-10 bg-sunflower rounded-full flex items-center justify-center shadow-lg">
-              <Brush className="w-5 h-5 text-white" fill="currentColor" />
-            </div>
-            <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-lilac rounded-full flex items-center justify-center shadow-lg">
-              <TreePalm className="w-6 h-6 text-white" />
+            {/* Sunflower on corner of video - more realistic */}
+            <div className="absolute -bottom-6 -left-8 w-16 h-16 lg:-bottom-8 lg:-left-10 lg:w-20 lg:h-20 transform -rotate-15">
+              <svg viewBox="0 0 100 100" className="w-full h-full">
+                {/* Outer petals */}
+                <g fill="#FFD700">
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(0 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(22.5 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(45 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(67.5 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(90 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(112.5 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(135 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(157.5 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(180 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(202.5 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(225 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(247.5 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(270 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(292.5 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(315 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(337.5 50 50)"/>
+                </g>
+                {/* Inner petals */}
+                <g fill="#FFA500">
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(11.25 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(33.75 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(56.25 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(78.75 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(101.25 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(123.75 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(146.25 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(168.75 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(191.25 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(213.75 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(236.25 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(258.75 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(281.25 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(303.75 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(326.25 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(348.75 50 50)"/>
+                </g>
+                {/* Center with gradient effect */}
+                <circle cx="50" cy="50" r="16" fill="#654321"/>
+                <circle cx="50" cy="50" r="12" fill="#8B4513"/>
+                <circle cx="50" cy="50" r="8" fill="#A0522D"/>
+              </svg>
             </div>
           </div>
         </div>

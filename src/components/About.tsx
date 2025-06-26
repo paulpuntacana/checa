@@ -1,4 +1,4 @@
-import { Star, Award, Heart, Brush } from "lucide-react";
+import { Star, Award, Heart, Brush, TreePalm } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const About = () => {
@@ -24,11 +24,56 @@ const About = () => {
               </div>
             </div>
             {/* Decorative elements */}
-            <div className="absolute -top-4 -right-4 w-12 h-12 bg-sunflower rounded-full flex items-center justify-center shadow-lg">
-              <Star className="w-6 h-6 text-white" fill="currentColor" />
+            {/* Sunflower top right - same as Hero */}
+            <div className="absolute -top-6 -right-8 w-16 h-16 lg:w-20 lg:h-20 transform rotate-15">
+              <svg viewBox="0 0 100 100" className="w-full h-full">
+                {/* Outer petals */}
+                <g fill="#FFD700">
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(0 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(22.5 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(45 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(67.5 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(90 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(112.5 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(135 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(157.5 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(180 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(202.5 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(225 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(247.5 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(270 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(292.5 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(315 50 50)"/>
+                  <ellipse cx="50" cy="20" rx="3" ry="16" transform="rotate(337.5 50 50)"/>
+                </g>
+                {/* Inner petals */}
+                <g fill="#FFA500">
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(11.25 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(33.75 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(56.25 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(78.75 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(101.25 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(123.75 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(146.25 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(168.75 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(191.25 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(213.75 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(236.25 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(258.75 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(281.25 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(303.75 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(326.25 50 50)"/>
+                  <ellipse cx="50" cy="28" rx="2.5" ry="10" transform="rotate(348.75 50 50)"/>
+                </g>
+                {/* Center with gradient effect */}
+                <circle cx="50" cy="50" r="16" fill="#654321"/>
+                <circle cx="50" cy="50" r="12" fill="#8B4513"/>
+                <circle cx="50" cy="50" r="8" fill="#A0522D"/>
+              </svg>
             </div>
-            <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-lilac rounded-full flex items-center justify-center shadow-lg">
-              <Brush className="w-8 h-8 text-white" />
+            {/* Palm tree bottom left */}
+            <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-palm-green rounded-full flex items-center justify-center shadow-lg">
+              <TreePalm className="w-8 h-8 text-white" />
             </div>
           </div>
 
