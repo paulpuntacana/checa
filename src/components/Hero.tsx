@@ -53,17 +53,17 @@ const Hero = () => {
         <img 
           src="/images/logo.png" 
           alt="Checa Makeup Logo" 
-          className="h-16 lg:h-40 w-auto drop-shadow-lg"
+          className="h-14 lg:h-32 w-auto drop-shadow-lg"
         />
       </div>
       {/* Elegant decorative elements */}
       <div className="absolute top-40 right-20 w-24 h-0.5 bg-gradient-to-r from-transparent via-lilac/50 to-transparent hidden lg:block transform -rotate-12" style={{animationDelay: '2s'}}></div>
       <div className="absolute bottom-48 left-20 w-20 h-0.5 bg-gradient-to-r from-transparent via-purple-200/70 to-transparent hidden lg:block transform rotate-45" style={{animationDelay: '0.5s'}}></div>
       
-      <div className="container mx-auto px-6 relative z-10 max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center justify-center">
+      <div className="container mx-auto px-6 relative z-10 max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
           {/* Left side - Text content */}
-          <div className="animate-fade-in lg:col-span-2 order-1 lg:order-1 lg:mt-8">
+          <div className="animate-fade-in lg:col-span-2 order-1 lg:order-1 lg:mt-8 lg:pl-8 xl:pl-16">
             
             <h1 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight drop-shadow-sm text-center lg:text-left">
               {t('hero.title1')}
@@ -110,7 +110,7 @@ const Hero = () => {
           </div>
 
           {/* Right side - Video */}
-          <div className="relative w-full max-w-xl mx-auto lg:mx-0 lg:col-span-3 order-2 lg:order-2 block">
+          <div className="relative w-full max-w-xl mx-auto lg:col-span-3 order-2 lg:order-2 flex flex-col justify-center">
             {/* Horizontal decorative line above video - right aligned, running from right to left */}
             <div className="hidden lg:flex justify-end mb-6">
               <div className="flex items-center space-x-2">
@@ -122,7 +122,7 @@ const Hero = () => {
             
             <div 
               className="aspect-video w-full bg-gradient-glamour shadow-2xl relative overflow-hidden cursor-pointer"
-              style={{ borderRadius: '24px 0 24px 24px' }}
+              style={{ borderRadius: '0 24px 24px 24px' }}
               onMouseEnter={() => setIsVideoHovered(true)}
               onMouseLeave={() => setIsVideoHovered(false)}
             >
@@ -156,7 +156,7 @@ const Hero = () => {
               </div>
             </div>
             {/* Sunflower on corner of video - more realistic */}
-            <div className="absolute -bottom-6 -left-8 w-16 h-16 lg:-bottom-8 lg:-left-10 lg:w-20 lg:h-20 transform -rotate-15">
+            <div className="absolute -bottom-6 -right-8 w-16 h-16 lg:-bottom-8 lg:-right-10 lg:w-20 lg:h-20 transform rotate-15">
               <svg viewBox="0 0 100 100" className="w-full h-full">
                 {/* Outer petals */}
                 <g fill="#FFD700">
