@@ -105,6 +105,24 @@
 
   <body>
     <div id="root"></div>
+    
+    <!-- Hidden form for Netlify detection -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="firstName" />
+      <input type="text" name="lastName" />
+      <input type="email" name="email" />
+      <input type="text" name="phone" />
+      <select name="service">
+        <option value="bridal">Bridal Makeup</option>
+        <option value="event">Event Makeup</option>
+        <option value="resort">Resort Partnership</option>
+        <option value="editorial">Editorial Photo</option>
+        <option value="group">Group Services</option>
+        <option value="other">Other</option>
+      </select>
+      <textarea name="message"></textarea>
+    </form>
+    
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

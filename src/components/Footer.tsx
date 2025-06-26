@@ -51,7 +51,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#f4e1ff] text-purple-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-0">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="space-y-4">
@@ -161,21 +161,25 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="mt-12 pt-8 border-t border-purple-300">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-600 text-sm text-center md:text-left">
+        <div className="mt-8 pt-4 pb-4 border-t border-purple-300">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
+            <p className="text-gray-600 text-sm text-center md:text-left mb-0">
               {t.copyright}
             </p>
-            <p className="text-purple-900 text-sm text-center md:text-right flex items-center">
-              {t.madeWith} <Heart className="h-4 w-4 mx-1 text-red-500" fill="currentColor" /> {t.inDR}{" "}
-              <a 
-                href="https://www.denhartogh.solutions" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-purple-900 hover:text-purple-700 transition-colors duration-300 ml-1"
-              >
-                {t.company}
-              </a>
+            <p className="text-purple-900 text-sm text-center md:text-right mb-0">
+              <span className="inline-flex items-center flex-wrap justify-center md:justify-end gap-1">
+                <span>{t.madeWith}</span>
+                <Heart className="h-4 w-4 text-red-500" fill="currentColor" />
+                <span>{t.inDR}</span>
+                <a 
+                  href="https://www.denhartogh.solutions" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-purple-900 hover:text-purple-700 transition-colors duration-300"
+                >
+                  {t.company}
+                </a>
+              </span>
             </p>
           </div>
         </div>

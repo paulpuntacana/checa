@@ -47,36 +47,36 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-lilac-light via-warm-white to-purple-soft overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-lilac-light via-warm-white to-purple-soft overflow-hidden py-8">
       {/* Logo in top left */}
-      <div className="absolute top-12 left-32 z-20 animate-float">
+      <div className="absolute top-4 left-4 lg:top-12 lg:left-32 z-20 lg:animate-float">
         <img 
           src="/images/logo.png" 
           alt="Checa Makeup Logo" 
-          className="h-40 w-auto drop-shadow-lg"
+          className="h-32 lg:h-40 w-auto drop-shadow-lg"
         />
       </div>
-      {/* Makeup-themed decorative elements */}
-      <div className="absolute top-16 left-8 w-20 h-20 bg-gradient-glamour rounded-full animate-float flex items-center justify-center shadow-lg">
+      {/* Makeup-themed decorative elements - hidden on mobile */}
+      <div className="absolute top-16 left-8 w-20 h-20 bg-gradient-glamour rounded-full animate-float flex items-center justify-center shadow-lg hidden lg:flex">
         <Brush className="w-10 h-10 text-white" />
       </div>
-      <div className="absolute top-32 right-16 w-24 h-24 bg-sunflower/80 rounded-full animate-float flex items-center justify-center shadow-lg" style={{animationDelay: '1s'}}>
+      <div className="absolute top-32 right-16 w-24 h-24 bg-sunflower/80 rounded-full animate-float flex items-center justify-center shadow-lg hidden lg:flex" style={{animationDelay: '1s'}}>
         <Sun className="w-12 h-12 text-white" />
       </div>
-      <div className="absolute top-20 left-1/3 w-16 h-16 bg-palm-green/70 rounded-full animate-float flex items-center justify-center shadow-lg" style={{animationDelay: '2s'}}>
+      <div className="absolute top-20 left-1/3 w-16 h-16 bg-palm-green/70 rounded-full animate-float flex items-center justify-center shadow-lg hidden lg:flex" style={{animationDelay: '2s'}}>
         <TreePalm className="w-8 h-8 text-white" />
       </div>
-      <div className="absolute bottom-40 right-1/4 w-18 h-18 bg-gradient-accent rounded-full animate-float flex items-center justify-center shadow-lg" style={{animationDelay: '0.5s'}}>
+      <div className="absolute bottom-40 right-1/4 w-18 h-18 bg-gradient-accent rounded-full animate-float flex items-center justify-center shadow-lg hidden lg:flex" style={{animationDelay: '0.5s'}}>
         <Brush className="w-9 h-9 text-white" />
       </div>
-      <div className="absolute bottom-32 left-16 w-14 h-14 bg-lilac/60 rounded-full animate-float shadow-lg" style={{animationDelay: '1.5s'}}></div>
-      <div className="absolute top-64 right-32 w-12 h-12 bg-sunflower/40 rounded-full animate-float shadow-lg" style={{animationDelay: '2.5s'}}></div>
+      <div className="absolute bottom-32 left-16 w-14 h-14 bg-lilac/60 rounded-full animate-float shadow-lg hidden lg:block" style={{animationDelay: '1.5s'}}></div>
+      <div className="absolute top-64 right-32 w-12 h-12 bg-sunflower/40 rounded-full animate-float shadow-lg hidden lg:block" style={{animationDelay: '2.5s'}}></div>
       
       <div className="container mx-auto px-6 relative z-10 max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center justify-center">
           {/* Left side - Text content */}
-          <div className="animate-fade-in lg:col-span-2">
-            <div className="flex justify-center lg:justify-start mb-6">
+          <div className="animate-fade-in lg:col-span-2 order-1 lg:order-1">
+            <div className="hidden lg:flex justify-center lg:justify-start mb-6">
               <div className="w-16 h-16 bg-gradient-glamour rounded-full flex items-center justify-center animate-pulse shadow-xl border-4 border-white/30">
                 <Brush className="w-8 h-8 text-white" />
               </div>
@@ -116,9 +116,9 @@ const Hero = () => {
           </div>
 
           {/* Right side - Video */}
-          <div className="relative max-w-xl mx-auto lg:mx-0 lg:col-span-3">
+          <div className="relative w-full max-w-xl mx-auto lg:mx-0 lg:col-span-3 order-2 lg:order-2 block">
             <div 
-              className="aspect-video bg-gradient-glamour rounded-3xl shadow-2xl relative overflow-hidden cursor-pointer"
+              className="aspect-video w-full bg-gradient-glamour rounded-3xl shadow-2xl relative overflow-hidden cursor-pointer"
               onMouseEnter={() => setIsVideoHovered(true)}
               onMouseLeave={() => setIsVideoHovered(false)}
             >
@@ -162,8 +162,8 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Discover More Arrow - Centered like Services section */}
-      <div className="absolute bottom-8 w-full">
+      {/* Discover More Arrow - Hidden on mobile */}
+      <div className="absolute bottom-8 w-full hidden lg:block">
         <div className="container mx-auto px-6">
           <div className="flex justify-center">
             <div className="animate-bounce">

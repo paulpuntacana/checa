@@ -28,7 +28,7 @@ const Portfolio = () => {
       alt: "Multicultural wedding makeup Dominican Republic - Professional bridal makeup artist Punta Cana - Checa Makeup"
     },
     {
-      src: "/images/portfolio6.jpeg",
+      src: "/images/portfolio7.jpeg",
       alt: "Resort wedding makeup services Punta Cana - Professional bridal makeup Dominican Republic - Checa Makeup by Franchesca"
     }
   ];

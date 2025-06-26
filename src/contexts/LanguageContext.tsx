@@ -119,6 +119,15 @@ const translations: Translations = {
     'contact.message': 'Message',
     'contact.messagePlaceholder': 'Tell us about your event, vision, or partnership interest...',
     'contact.send': 'Send Message',
+    
+    // Contact specifications
+    'contact.specifications.title': 'Important Information',
+    'contact.specifications.1.title': 'Consultation Details',
+    'contact.specifications.1.desc': 'Please provide information about your requested makeup look, any allergies, and your skin type to ensure the best results.',
+    'contact.specifications.2.title': 'Preparation Guidelines', 
+    'contact.specifications.2.desc': 'Please make sure to clean your skin and eyebrows a day before the event for optimal makeup application.',
+    'contact.specifications.3.title': 'Punctuality Commitment',
+    'contact.specifications.3.desc': 'We will arrive at the agreed time to avoid delays. Punctuality is key to ensuring your event runs smoothly.',
   },
   es: {
     // Language names
@@ -229,6 +238,15 @@ const translations: Translations = {
     'contact.message': 'Mensaje',
     'contact.messagePlaceholder': 'Cuéntanos sobre tu evento, visión, o interés de alianza...',
     'contact.send': 'Enviar Mensaje',
+    
+    // Contact specifications  
+    'contact.specifications.title': 'Información Importante',
+    'contact.specifications.1.title': 'Detalles de Consulta',
+    'contact.specifications.1.desc': 'Por favor proporciona información sobre el look de maquillaje deseado, alergias y tipo de piel para asegurar los mejores resultados.',
+    'contact.specifications.2.title': 'Guías de Preparación',
+    'contact.specifications.2.desc': 'Por favor asegúrate de limpiar tu piel y cejas un día antes del evento para una aplicación óptima del maquillaje.',
+    'contact.specifications.3.title': 'Compromiso de Puntualidad', 
+    'contact.specifications.3.desc': 'Llegaremos a la hora acordada para evitar retrasos. La puntualidad es clave para asegurar que tu evento transcurra sin problemas.',
   },
 };
 
