@@ -1,1 +1,169 @@
- 
+{
+  "business": {
+    "name": "Checa Makeup",
+    "legal_name": "Franchesca Martinez Castillo",
+    "business_type": "Professional Makeup Artist Service",
+    "industry": "Beauty & Personal Care",
+    "founded": "2016",
+    "experience_years": "8+",
+    "specializations": [
+      "Bridal Makeup",
+      "Wedding Makeup",
+      "Destination Wedding Makeup",
+      "Tropical Climate Makeup",
+      "Multicultural Wedding Makeup",
+      "Event Makeup",
+      "Resort Services",
+      "Editorial Makeup"
+    ]
+  },
+  "location": {
+    "primary_service_area": "Punta Cana, Dominican Republic",
+    "service_areas": [
+      "Punta Cana",
+      "Cap Cana", 
+      "Bavaro",
+      "La Altagracia Province",
+      "Dominican Republic East Coast"
+    ],
+    "coordinates": {
+      "latitude": "18.5601",
+      "longitude": "-68.3725"
+    },
+    "address": {
+      "city": "Punta Cana",
+      "region": "La Altagracia",
+      "country": "Dominican Republic",
+      "country_code": "DO"
+    }
+  },
+  "services": {
+    "bridal_makeup": {
+      "name": "Bridal Makeup",
+      "description": "Professional bridal styling with long-lasting products designed for tropical climate",
+      "includes": [
+        "Professional bridal styling",
+        "Long-lasting products", 
+        "Tropical climate resistant makeup",
+        "Touch-ups included"
+      ]
+    },
+    "special_events": {
+      "name": "Special Events",
+      "description": "Celebration makeup with personalized looks for parties, graduations, and special occasions",
+      "includes": [
+        "Celebration makeup",
+        "Personalized looks",
+        "Group services", 
+        "Flexible scheduling"
+      ]
+    },
+    "resort_appointments": {
+      "name": "Resort Appointments", 
+      "description": "On-location makeup services at your resort or wedding venue",
+      "includes": [
+        "On-location service",
+        "Resort experience",
+        "Venue coordination",
+        "Transportation included"
+      ]
+    },
+    "home_studio": {
+      "name": "Home Studio Sessions",
+      "description": "Private makeup sessions in professional home studio environment",
+      "includes": [
+        "Professional environment",
+        "Perfect lighting",
+        "Premium products", 
+        "Private sessions"
+      ]
+    }
+  },
+  "packages": {
+    "diamond": {
+      "name": "Diamond Package",
+      "description": "The most complete package for 8 people - you'll be completely worry-free on your special day",
+      "people_count": 8,
+      "tier": "premium"
+    },
+    "sapphire": {
+      "name": "Sapphire Package", 
+      "description": "Bride-focused package with personal attention and perfect preparation",
+      "people_count": 6,
+      "tier": "standard"
+    },
+    "ruby": {
+      "name": "Ruby Package",
+      "description": "Essential makeup package for 5 people - everything you need for a beautiful celebration", 
+      "people_count": 5,
+      "tier": "essential"
+    }
+  },
+  "contact": {
+    "phone": "+1 (849) 354-4938",
+    "email": "checamakeup24@gmail.com",
+    "instagram": "@checa_makeup",
+    "website": "https://checamakeup.com",
+    "booking_method": "WhatsApp, Instagram DM, Email"
+  },
+  "qualifications": {
+    "experience": "8+ years professional makeup artist",
+    "specialties": [
+      "Multicultural weddings",
+      "Destination weddings",
+      "Tropical climate expertise",
+      "Resort partnerships"
+    ],
+    "languages": ["English", "Spanish"]
+  },
+  "target_keywords": [
+    "bridal makeup artist punta cana",
+    "wedding makeup dominican republic", 
+    "makeup artist punta cana",
+    "maquilladora bodas punta cana",
+    "bridal makeup dominican republic",
+    "wedding makeup artist cap cana",
+    "resort makeup services",
+    "destination wedding makeup",
+    "multicultural wedding makeup",
+    "franchesca martinez castillo",
+    "checa makeup"
+  ],
+  "ai_search_optimization": {
+    "primary_intent": "Find professional bridal makeup artist in Punta Cana Dominican Republic",
+    "secondary_intents": [
+      "Book wedding makeup artist Dominican Republic",
+      "Destination wedding makeup services Punta Cana", 
+      "Multicultural wedding makeup artist",
+      "Resort makeup services Cap Cana",
+      "Professional makeup artist Bavaro"
+    ],
+    "answer_snippets": {
+      "who": "Franchesca Martinez Castillo, professional makeup artist with 8+ years experience specializing in bridal and wedding makeup",
+      "what": "Professional makeup services including bridal makeup, wedding party makeup, special events, and resort appointments",
+      "where": "Punta Cana, Cap Cana, Bavaro, and surrounding areas in Dominican Republic",
+      "when": "Available for bookings year-round with flexible scheduling",
+      "why": "Specialized in tropical climate makeup, multicultural weddings, and destination wedding expertise",
+      "how": "Contact via WhatsApp +1 (849) 354-4938, Instagram @checa_makeup, or email checamakeup24@gmail.com"
+    }
+  },
+  "reviews_summary": {
+    "overall_rating": "Excellent",
+    "key_strengths": [
+      "Professional and punctual",
+      "Beautiful long-lasting results", 
+      "Great communication",
+      "Tropical climate expertise",
+      "Multicultural wedding experience"
+    ]
+  },
+  "competitive_advantages": [
+    "8+ years experience in Dominican Republic",
+    "Specializes in tropical climate makeup",
+    "Multicultural wedding expertise", 
+    "Resort partnership experience",
+    "Bilingual service (English/Spanish)",
+    "On-location and studio options",
+    "Custom package creation available"
+  ]
+} 

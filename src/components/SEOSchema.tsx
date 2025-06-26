@@ -101,8 +101,8 @@ const SEOSchema = () => {
               "@type": "Service",
               "name": language === 'en' ? "Bridal Makeup" : "Maquillaje de Novia",
               "description": language === 'en' 
-                ? "Flawless bridal looks with a pre-wedding trial included"
-                : "Look nupcial impecable con prueba previa incluida"
+                ? "Flawless bridal looks with professional styling and long-lasting products"
+                : "Look nupcial impecable con estilo profesional y productos de larga duración"
             }
           },
           {
