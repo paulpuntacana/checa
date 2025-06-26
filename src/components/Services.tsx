@@ -11,12 +11,12 @@ const Services = () => {
         <svg viewBox="0 0 120 120" className="w-full h-full">
           <defs>
             <linearGradient id="bridalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style={{ stopColor: '#dab5fa', stopOpacity: 1 }} />
-              <stop offset="50%" style={{ stopColor: '#f1e2fd', stopOpacity: 1 }} />
-              <stop offset="100%" style={{ stopColor: '#512082', stopOpacity: 1 }} />
+              <stop offset="0%" style={{ stopColor: '#512082', stopOpacity: 1 }} />
+              <stop offset="50%" style={{ stopColor: '#dab5fa', stopOpacity: 1 }} />
+              <stop offset="100%" style={{ stopColor: '#f1e2fd', stopOpacity: 1 }} />
             </linearGradient>
           </defs>
-          {/* Crown */}
+          {/* Crown for bridal */}
           <path d="M20 45 L30 25 L40 35 L50 20 L60 35 L70 25 L80 45 L85 55 L75 60 L15 60 Z" 
                 fill="url(#bridalGradient)" opacity="0.8" />
           {/* Gems on crown */}
@@ -47,10 +47,10 @@ const Services = () => {
         </svg>
       ),
               details: [
-          "Professional bridal styling",
-          "Long-lasting products",
-          "Tropical climate resistant", 
-          "Touch-ups included"
+          t('services.bridal.detail1'),
+          t('services.bridal.detail2'),
+          t('services.bridal.detail3'), 
+          t('services.bridal.detail4')
         ]
     },
     {
@@ -95,10 +95,10 @@ const Services = () => {
         </svg>
       ),
               details: [
-          "Celebration makeup",
-          "Personalized looks",
-          "Group services",
-          "Flexible scheduling"
+          t('services.events.detail1'),
+          t('services.events.detail2'),
+          t('services.events.detail3'),
+          t('services.events.detail4')
         ]
     },
     {
@@ -139,10 +139,10 @@ const Services = () => {
         </svg>
       ),
               details: [
-          "Service at your location",
-          "Resort experience",
-          "Venue coordination",
-          "Transportation included"
+          t('services.resort.detail1'),
+          t('services.resort.detail2'),
+          t('services.resort.detail3'),
+          t('services.resort.detail4')
         ]
     },
     {
@@ -197,10 +197,10 @@ const Services = () => {
         </svg>
       ),
               details: [
-          "Professional environment",
-          "Perfect lighting",
-          "Premium products",
-          "Private sessions"
+          t('services.homeStudio.detail1'),
+          t('services.homeStudio.detail2'),
+          t('services.homeStudio.detail3'),
+          t('services.homeStudio.detail4')
         ]
     }
   ];

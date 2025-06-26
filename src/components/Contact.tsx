@@ -254,7 +254,7 @@ const Contact = () => {
                 className="hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-600 hover:text-white transition-all duration-300 transform hover:scale-105 border-2 border-pink-400 text-pink-600 px-8 py-3"
               >
                 <Instagram className="w-6 h-6 mr-2" />
-                Follow @checa_makeup
+                {t('language.english') === 'English' ? 'Follow @checa_makeup' : 'Síguenos @checa_makeup'}
               </Button>
             </a>
           </div>

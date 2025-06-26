@@ -19,12 +19,28 @@ const Hero = () => {
   };
 
   useEffect(() => {
-    // Scroll detection
+    // Scroll detection with initial check
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
+      const scrolled = window.scrollY > 100;
+      setIsScrolled(scrolled);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // Check initial scroll position immediately
+    handleScroll();
+
+    // Add scroll listener with throttling for performance
+    let ticking = false;
+    const throttledHandleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', throttledHandleScroll, { passive: true });
 
     // YouTube Player API script
     const tag = document.createElement('script');
@@ -54,7 +70,7 @@ const Hero = () => {
       });
     };
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', throttledHandleScroll);
   }, []);
 
   return (
@@ -327,11 +343,11 @@ const Hero = () => {
             <div className="absolute inset-0 pointer-events-none">
               {/* Top right corner decoration with 3 flowers */}
               <div className="absolute top-0 right-0 w-24 h-24 lg:w-28 lg:h-28 transform translate-x-4 -translate-y-1 lg:translate-x-6 lg:translate-y-3">
-                <svg viewBox="0 0 120 120" className="w-full h-full" style={{ overflow: 'visible' }}>
+                <svg viewBox="0 0 140 140" className="w-full h-full">
                   <g>
                     
                     {/* Main corner flower - larger and positioned at exact corner */}
-                    <g transform="translate(95, 25)">
+                    <g transform="translate(105, 28)">
                       <ellipse cx="0" cy="-18" rx="4" ry="10" fill="#dab5fa" />
                       <ellipse cx="0" cy="-18" rx="4" ry="10" fill="#f1e2fd" transform="rotate(30)" />
                       <ellipse cx="0" cy="-18" rx="4" ry="10" fill="#dab5fa" transform="rotate(60)" />
@@ -350,7 +366,7 @@ const Hero = () => {
 
                     
                     {/* Second flower - larger */}
-                    <g transform="translate(50, 45)">
+                    <g transform="translate(60, 55)">
                       <ellipse cx="0" cy="-12" rx="3" ry="7" fill="#f1e2fd" />
                       <ellipse cx="0" cy="-12" rx="3" ry="7" fill="#dab5fa" transform="rotate(45)" />
                       <ellipse cx="0" cy="-12" rx="3" ry="7" fill="#f1e2fd" transform="rotate(90)" />
@@ -365,7 +381,7 @@ const Hero = () => {
 
                     
                     {/* Third flower - larger */}
-                    <g transform="translate(75, 75)">
+                    <g transform="translate(85, 85)">
                       <ellipse cx="0" cy="-10" rx="2.5" ry="6" fill="#dab5fa" />
                       <ellipse cx="0" cy="-10" rx="2.5" ry="6" fill="#f1e2fd" transform="rotate(60)" />
                       <ellipse cx="0" cy="-10" rx="2.5" ry="6" fill="#dab5fa" transform="rotate(120)" />
@@ -435,11 +451,11 @@ const Hero = () => {
 
               {/* Bottom right corner decoration with 3 flowers */}
               <div className="absolute bottom-0 right-0 w-44 h-44 lg:w-48 lg:h-48 transform translate-x-4 translate-y-4 lg:translate-x-5 lg:translate-y-5">
-                <svg viewBox="0 0 220 220" className="w-full h-full" style={{ overflow: 'visible' }}>
+                <svg viewBox="0 0 250 250" className="w-full h-full">
                   <g>
                     
                     {/* Main corner flower - larger and positioned at exact corner */}
-                    <g transform="translate(190, 190)">
+                    <g transform="translate(215, 215)">
                       <ellipse cx="0" cy="-22" rx="5" ry="12" fill="#dab5fa" />
                       <ellipse cx="0" cy="-22" rx="5" ry="12" fill="#f1e2fd" transform="rotate(30)" />
                       <ellipse cx="0" cy="-22" rx="5" ry="12" fill="#dab5fa" transform="rotate(60)" />
@@ -458,7 +474,7 @@ const Hero = () => {
 
                     
                     {/* Second flower - larger */}
-                    <g transform="translate(160, 140)">
+                    <g transform="translate(175, 155)">
                       <ellipse cx="0" cy="-12" rx="3" ry="7" fill="#f1e2fd" />
                       <ellipse cx="0" cy="-12" rx="3" ry="7" fill="#dab5fa" transform="rotate(45)" />
                       <ellipse cx="0" cy="-12" rx="3" ry="7" fill="#f1e2fd" transform="rotate(90)" />
@@ -473,7 +489,7 @@ const Hero = () => {
 
                     
                     {/* Third flower - larger */}
-                    <g transform="translate(140, 175)">
+                    <g transform="translate(155, 190)">
                       <ellipse cx="0" cy="-10" rx="2.5" ry="6" fill="#dab5fa" />
                       <ellipse cx="0" cy="-10" rx="2.5" ry="6" fill="#f1e2fd" transform="rotate(60)" />
                       <ellipse cx="0" cy="-10" rx="2.5" ry="6" fill="#dab5fa" transform="rotate(120)" />

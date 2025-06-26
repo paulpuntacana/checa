@@ -72,7 +72,7 @@ const Portfolio = () => {
                     className="bg-white/90 text-purple-600 px-4 py-2 rounded-full font-medium hover:bg-white transition-colors flex items-center gap-2"
                   >
                     <Instagram className="w-4 h-4" />
-                    View on Instagram
+                    {t('portfolio.viewOnInstagram')}
                   </a>
             </div>
           </div>
@@ -85,16 +85,15 @@ const Portfolio = () => {
               href="https://www.instagram.com/checa_makeup/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 hover:from-pink-600 hover:via-purple-600 hover:to-indigo-600 text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center gap-3 hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-600 hover:text-white transition-all duration-300 transform hover:scale-105 border-2 border-pink-400 text-pink-600 px-8 py-3 rounded-lg font-semibold bg-white"
             >
-              <Instagram className="w-5 h-5" />
+              <Instagram className="w-6 h-6" />
               <span>
                 {t('language.english') === 'English' 
                   ? 'Follow @checa_makeup for more'
                   : 'Síguenos @checa_makeup para más'
                 }
               </span>
-              <ExternalLink className="w-4 h-4" />
             </a>
           </div>
         </div>

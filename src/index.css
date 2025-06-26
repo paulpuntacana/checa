@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 @tailwind base;
 @tailwind components;
@@ -71,19 +70,19 @@
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground font-inter;
-  }
   
-  /* Hide scroll indicators on iOS Safari */
   html {
     -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
   }
   
   body {
+    @apply bg-background text-foreground font-inter;
     /* Hide scroll indicator on iOS */
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
+    overflow-x: hidden;
+    width: 100%;
   }
   
   body::-webkit-scrollbar {
