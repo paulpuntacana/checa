@@ -24,9 +24,9 @@ const HowWeWork = () => {
   ];
 
   return (
-    <section id="how-we-work" className="py-20 bg-gradient-to-br from-warm-white to-white">
+    <section id="how-we-work" className="py-16 bg-gradient-to-br from-warm-white to-white">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+                  <div className="text-center mb-12">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-6">
             <Wand2 className="w-8 h-8 text-purple-700" />
           </div>
@@ -38,15 +38,15 @@ const HowWeWork = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
           {steps.map((step, index) => (
             <div 
               key={index} 
-              className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-purple-50/50"
+              className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-purple-50/50"
             >
               <div className="relative mb-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-purple-700 to-purple-900 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <step.icon className="w-8 h-8 text-white" />
+                <div className="w-16 h-16 bg-[#f4e1ff] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 border border-purple-200">
+                  <step.icon className="w-8 h-8 text-purple-900" />
                 </div>
                 <div className="absolute -top-2 -right-2 w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
                   <span className="text-sm font-bold text-purple-700">{step.number}</span>

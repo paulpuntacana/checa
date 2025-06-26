@@ -5,16 +5,16 @@ const About = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="about" className="py-20 bg-warm-white">
+    <section id="about" className="py-16 bg-warm-white">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
           <div className="relative lg:col-span-1">
             <div className="aspect-[3/4] max-w-[400px] mx-auto bg-gradient-glamour rounded-3xl shadow-2xl relative overflow-hidden">
               <div className="absolute inset-0 bg-white/10"></div>
               <img 
-                src="/images/about.png" 
+                src="/images/about2.jpeg" 
                 alt="Franchesca Martinez Castillo" 
-                className="w-full h-full object-contain"
+                className="w-full h-full object-cover object-top"
               />
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4">

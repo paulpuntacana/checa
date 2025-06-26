@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 type Language = 'en' | 'es';
 
@@ -14,22 +15,24 @@ const translations: Translations = {
     'language.english': 'English',
     'language.spanish': 'Spanish',
     // Hero section
-    'hero.title1': 'Tropical Beauty',
-    'hero.title2': 'Makeup Artistry',
-    'hero.subtitle': 'Professional makeup services for resorts, weddings, and special events in the Dominican Republic',
-    'hero.viewPortfolio': 'View Portfolio',
-    'hero.partnerships': 'Resort Partnerships',
+    'hero.title1': 'Your Wedding.',
+    'hero.title2': 'Your Glow.',
+    'hero.title3': 'Our Team.',
+    'hero.subtitle': 'Professional bridal makeup under the Caribbean sun.',
+    'hero.howWeWork': 'How we work',
+    'hero.bookTrial': 'Book a Trial',
+    'hero.discoverMore': 'Discover More',
     
     // About section
     'about.title': 'Professional Makeup Artist',
     'about.meetTitle': 'Meet Franchesca',
-    'about.intro': 'With over 10 years of experience in the beauty industry, Franchesca Martinez Castillo has become one of the most sought-after makeup artists in the Dominican Republic. Specializing in bridal, fashion, and resort makeup services.',
-    'about.experience': '10+ Years',
-    'about.experienceDesc': 'Professional makeup artistry',
-    'about.specialization': 'Caribbean Beauty',
-    'about.specializationDesc': 'Tropical & resort expertise',
-    'about.philosophy': 'My Philosophy',
-    'about.philosophyDesc': 'Every woman deserves to feel beautiful and confident. I create looks that enhance natural beauty while embracing the vibrant spirit of Caribbean glamour.',
+    'about.intro': 'With 8 years of professional makeup experience, Franchesca Martinez Castillo has worked with brides from all backgrounds — Dominican, Hindu, American and more. She specializes in long-lasting, radiant looks for every skin tone, tailored to tropical destinations like Punta Cana.',
+    'about.experience': '8 Years',
+    'about.experienceDesc': 'Professional makeup expertise',
+    'about.specialization': 'Multicultural Weddings',
+    'about.specializationDesc': 'American, Hindu, Dominican & more',
+    'about.philosophy': 'My Approach',
+    'about.philosophyDesc': 'From luxury resorts to intimate weddings, her style is always elegant, personal, and heat-proof.',
     
     // Portfolio section
     'portfolio.title': 'Glamorous Portfolio',
@@ -89,13 +92,32 @@ const translations: Translations = {
     'partnership.startDiscussion': 'Start Partnership Discussion',
     
     // Contact section
-    'contact.title': 'Get In Touch',
-    'contact.subtitle': 'Ready to create your perfect look? Contact us today',
+    'contact.title': 'Let\'s Create Your Perfect Day',
+    'contact.subtitle': 'Your wedding deserves to be magical. Let\'s bring your bridal beauty dreams to life in paradise.',
+    'contact.letsConnect': 'Let\'s Connect',
+    'contact.description': 'Whether you\'re planning a destination wedding, organizing a luxury event, or looking to establish a partnership with your resort, I\'m here to help create unforgettable beauty experiences.',
     'contact.phone': 'Phone',
     'contact.email': 'Email',
     'contact.location': 'Location',
-    'contact.name': 'Name',
+    'contact.followWork': 'Follow Our Work',
+    'contact.sendMessage': 'Send a Message',
+    'contact.firstName': 'First Name',
+    'contact.lastName': 'Last Name',
+    'contact.firstNamePlaceholder': 'Your first name',
+    'contact.lastNamePlaceholder': 'Your last name',
+    'contact.emailPlaceholder': 'your.email@example.com',
+    'contact.phoneOptional': 'Phone (Optional)',
+    'contact.phonePlaceholder': '+1 (849) 354-4938',
+    'contact.serviceInterest': 'Service Interest',
+    'contact.selectService': 'Select a service',
+    'contact.bridalMakeup': 'Bridal Makeup',
+    'contact.eventMakeup': 'Event Makeup',
+    'contact.resortPartnership': 'Resort Partnership',
+    'contact.editorialPhoto': 'Editorial/Photo Shoot',
+    'contact.groupServices': 'Group Services',
+    'contact.other': 'Other',
     'contact.message': 'Message',
+    'contact.messagePlaceholder': 'Tell us about your event, vision, or partnership interest...',
     'contact.send': 'Send Message',
   },
   es: {
@@ -103,22 +125,24 @@ const translations: Translations = {
     'language.english': 'Inglés',
     'language.spanish': 'Español',
     // Hero section
-    'hero.title1': 'Belleza Tropical',
-    'hero.title2': 'Arte en Maquillaje',
-    'hero.subtitle': 'Servicios profesionales de maquillaje para resorts, bodas y eventos especiales en República Dominicana',
-    'hero.viewPortfolio': 'Ver Portafolio',
-    'hero.partnerships': 'Alianzas con Resorts',
+          'hero.title1': 'Tu Boda.',
+      'hero.title2': 'Tu Brillo.',
+      'hero.title3': 'Nuestro Equipo.',
+      'hero.subtitle': 'Maquillaje profesional para novias bajo el sol del Caribe.',
+          'hero.howWeWork': 'Cómo trabajamos',
+      'hero.bookTrial': 'Reservar Prueba',
+      'hero.discoverMore': 'Descubre Más',
     
     // About section
     'about.title': 'Maquilladora Profesional',
     'about.meetTitle': 'Conoce a Franchesca',
-    'about.intro': 'Con más de 10 años de experiencia en la industria de la belleza, Franchesca Martinez Castillo se ha convertido en una de las maquilladoras más solicitadas de República Dominicana. Especializada en maquillaje nupcial, de moda y servicios para resorts.',
-    'about.experience': '10+ Años',
-    'about.experienceDesc': 'Arte profesional en maquillaje',
-    'about.specialization': 'Belleza Caribeña',
-    'about.specializationDesc': 'Experiencia tropical y resorts',
-    'about.philosophy': 'Mi Filosofía',
-    'about.philosophyDesc': 'Toda mujer merece sentirse hermosa y segura. Creo looks que realzan la belleza natural mientras abrazan el espíritu vibrante del glamour caribeño.',
+    'about.intro': 'Con 8 años de experiencia en maquillaje profesional, Franchesca Martinez Castillo ha embellecido novias de todo tipo: bodas dominicanas, hindúes, americanas y más. Su especialidad es crear looks duraderos y radiantes para todos los tonos de piel, incluso en climas tropicales exigentes como el de Punta Cana.',
+    'about.experience': '8 Años',
+    'about.experienceDesc': 'Experiencia profesional en maquillaje',
+    'about.specialization': 'Bodas Multiculturales',
+    'about.specializationDesc': 'Americanas, Hindúes, Dominicanas y más',
+    'about.philosophy': 'Mi Enfoque',
+    'about.philosophyDesc': 'Desde resorts de lujo hasta celebraciones íntimas, su toque es siempre personalizado, elegante y a prueba de calor.',
     
     // Portfolio section
     'portfolio.title': 'Portafolio Glamoroso',
@@ -178,13 +202,32 @@ const translations: Translations = {
     'partnership.startDiscussion': 'Iniciar Discusión de Alianza',
     
     // Contact section
-    'contact.title': 'Ponte en Contacto',
-    'contact.subtitle': '¿Listo para crear tu look perfecto? Contáctanos hoy',
+    'contact.title': 'Creemos Tu Día Perfecto',
+    'contact.subtitle': 'Tu boda merece ser mágica. Hagamos realidad tus sueños de belleza nupcial en el paraíso.',
+    'contact.letsConnect': 'Conectemos',
+    'contact.description': 'Ya sea que estés planeando una boda destino, organizando un evento de lujo, o buscando establecer una alianza con tu resort, estoy aquí para ayudar a crear experiencias de belleza inolvidables.',
     'contact.phone': 'Teléfono',
     'contact.email': 'Correo',
     'contact.location': 'Ubicación',
-    'contact.name': 'Nombre',
+    'contact.followWork': 'Sigue Nuestro Trabajo',
+    'contact.sendMessage': 'Enviar un Mensaje',
+    'contact.firstName': 'Nombre',
+    'contact.lastName': 'Apellido',
+    'contact.firstNamePlaceholder': 'Tu nombre',
+    'contact.lastNamePlaceholder': 'Tu apellido',
+    'contact.emailPlaceholder': 'tu.correo@ejemplo.com',
+    'contact.phoneOptional': 'Teléfono (Opcional)',
+    'contact.phonePlaceholder': '+1 (849) 354-4938',
+    'contact.serviceInterest': 'Interés de Servicio',
+    'contact.selectService': 'Selecciona un servicio',
+    'contact.bridalMakeup': 'Maquillaje de Novia',
+    'contact.eventMakeup': 'Maquillaje de Eventos',
+    'contact.resortPartnership': 'Alianza con Resort',
+    'contact.editorialPhoto': 'Editorial/Sesión Fotográfica',
+    'contact.groupServices': 'Servicios Grupales',
+    'contact.other': 'Otro',
     'contact.message': 'Mensaje',
+    'contact.messagePlaceholder': 'Cuéntanos sobre tu evento, visión, o interés de alianza...',
     'contact.send': 'Enviar Mensaje',
   },
 };
@@ -198,14 +241,33 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [language, setLanguage] = useState<Language>('en');
+
+  // Set language based on URL path
+  useEffect(() => {
+    const path = location.pathname;
+    if (path.startsWith('/es')) {
+      setLanguage('es');
+    } else if (path.startsWith('/en')) {
+      setLanguage('en');
+    }
+  }, [location.pathname]);
+
+  // Handle language switching with navigation
+  const handleSetLanguage = (lang: Language) => {
+    const currentPath = location.pathname;
+    const newPath = currentPath.replace(/^\/(en|es)/, `/${lang}`);
+    navigate(newPath, { replace: true });
+  };
 
   const t = (key: string): string => {
     return translations[language][key] || key;
   };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );

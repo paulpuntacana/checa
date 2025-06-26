@@ -51,8 +51,8 @@ const Services = () => {
               className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 bg-white group hover:bg-purple-50/50"
             >
               <CardHeader className="text-center pb-4">
-                <div className={`w-16 h-16 bg-gradient-to-r ${service.gradient} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                  <service.icon className="w-8 h-8 text-white" fill="currentColor" />
+                <div className="w-16 h-16 bg-[#f4e1ff] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 border border-purple-200">
+                  <service.icon className="w-8 h-8 text-purple-900" fill="currentColor" />
                 </div>
                 <CardTitle className="font-playfair text-2xl text-foreground">{service.title}</CardTitle>
               </CardHeader>

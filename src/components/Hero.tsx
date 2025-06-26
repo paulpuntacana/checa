@@ -1,20 +1,61 @@
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Sun, TreePalm, Brush } from "lucide-react";
+import { ArrowDown, Sun, TreePalm, Brush, Play } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useState, useEffect, useRef } from "react";
 
 const Hero = () => {
   const { t } = useLanguage();
+  const [isVideoHovered, setIsVideoHovered] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   
   const scrollToHowWeWork = () => {
-    document.getElementById('how-we-work')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('how-we-work-packages')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  useEffect(() => {
+    // YouTube Player API script
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+
+    // Create player when API is ready
+    (window as any).onYouTubeIframeAPIReady = () => {
+      new (window as any).YT.Player('youtube-player', {
+        events: {
+          onStateChange: (event: any) => {
+            // When video ends, restart from 10 seconds
+            if (event.data === (window as any).YT.PlayerState.ENDED) {
+              event.target.seekTo(10);
+              event.target.playVideo();
+            }
+            // Check current time and restart if past 2:14 (134 seconds)
+            const checkTime = setInterval(() => {
+              if (event.target.getCurrentTime && event.target.getCurrentTime() >= 134) {
+                event.target.seekTo(10);
+                clearInterval(checkTime);
+              }
+            }, 1000);
+          }
+        }
+      });
+    };
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-lilac-light via-warm-white to-purple-soft overflow-hidden">
+      {/* Logo in top left */}
+      <div className="absolute top-12 left-32 z-20 animate-float">
+        <img 
+          src="/images/logo.png" 
+          alt="Checa Makeup Logo" 
+          className="h-40 w-auto drop-shadow-lg"
+        />
+      </div>
       {/* Makeup-themed decorative elements */}
       <div className="absolute top-16 left-8 w-20 h-20 bg-gradient-glamour rounded-full animate-float flex items-center justify-center shadow-lg">
         <Brush className="w-10 h-10 text-white" />
@@ -31,10 +72,10 @@ const Hero = () => {
       <div className="absolute bottom-32 left-16 w-14 h-14 bg-lilac/60 rounded-full animate-float shadow-lg" style={{animationDelay: '1.5s'}}></div>
       <div className="absolute top-64 right-32 w-12 h-12 bg-sunflower/40 rounded-full animate-float shadow-lg" style={{animationDelay: '2.5s'}}></div>
       
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-6 relative z-10 max-w-6xl">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center justify-center">
           {/* Left side - Text content */}
-          <div className="animate-fade-in">
+          <div className="animate-fade-in lg:col-span-2">
             <div className="flex justify-center lg:justify-start mb-6">
               <div className="w-16 h-16 bg-gradient-glamour rounded-full flex items-center justify-center animate-pulse shadow-xl border-4 border-white/30">
                 <Brush className="w-8 h-8 text-white" />
@@ -42,14 +83,17 @@ const Hero = () => {
             </div>
             
             <h1 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight drop-shadow-sm text-center lg:text-left">
-              Your Wedding. Your Glow.
+              {t('hero.title1')}
+              <span className="block text-foreground">
+                {t('hero.title2')}
+              </span>
               <span className="block bg-gradient-to-r from-lilac to-purple-soft bg-clip-text text-transparent">
-                Our Team.
+                {t('hero.title3')}
               </span>
             </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-sm text-center lg:text-left">
-              Makeup artistry in paradise, by Checa make up & her squad.
+              {t('hero.subtitle')}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -58,7 +102,7 @@ const Hero = () => {
                 size="lg" 
                 className="bg-purple-700 text-white hover:bg-purple-800 transition-all duration-300 transform hover:scale-105 font-semibold px-8 py-3 shadow-xl border-2 border-white/20"
               >
-                How we work
+                {t('hero.howWeWork')}
               </Button>
               <Button 
                 variant="outline" 
@@ -66,20 +110,46 @@ const Hero = () => {
                 className="border-2 border-lilac text-purple-800 hover:bg-lilac hover:text-white transition-all duration-300 transform hover:scale-105 font-semibold px-8 py-3 bg-white shadow-lg"
                 onClick={scrollToContact}
               >
-                Book a Trial
+                {t('hero.bookTrial')}
               </Button>
             </div>
           </div>
 
-          {/* Right side - Image */}
-          <div className="relative max-w-md mx-auto lg:mx-0">
-            <div className="aspect-[4/5] bg-gradient-glamour rounded-3xl shadow-2xl relative overflow-hidden">
-              <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
-              <img 
-                src="/images/header-image.jpg" 
-                alt="Checa Makeup Team" 
+          {/* Right side - Video */}
+          <div className="relative max-w-xl mx-auto lg:mx-0 lg:col-span-3">
+            <div 
+              className="aspect-video bg-gradient-glamour rounded-3xl shadow-2xl relative overflow-hidden cursor-pointer"
+              onMouseEnter={() => setIsVideoHovered(true)}
+              onMouseLeave={() => setIsVideoHovered(false)}
+            >
+              {/* YouTube Video Embed */}
+              <iframe
+                id="youtube-player"
+                ref={iframeRef}
+                src="https://www.youtube.com/embed/7PFpO1XeycE?start=10&end=134&autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&fs=0&disablekb=1&vq=hd1080&enablejsapi=1"
+                title="Checa Makeup Video"
                 className="absolute inset-0 w-full h-full object-cover"
+                frameBorder="0"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
               />
+              
+              {/* Hover Overlay */}
+              <div 
+                className={`absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity duration-300 ${
+                  isVideoHovered ? 'opacity-100' : 'opacity-0'
+                }`}
+              >
+                <a
+                  href="https://www.youtube.com/watch?v=7PFpO1XeycE"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white/90 hover:bg-white text-purple-900 font-semibold py-3 px-6 rounded-full flex items-center space-x-2 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                >
+                  <Play className="w-5 h-5" />
+                  <span>View on YouTube</span>
+                </a>
+              </div>
             </div>
             {/* Decorative elements */}
             <div className="absolute -top-4 -right-4 w-10 h-10 bg-sunflower rounded-full flex items-center justify-center shadow-lg">
@@ -92,8 +162,20 @@ const Hero = () => {
         </div>
       </div>
       
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <ArrowDown className="w-6 h-6 text-lilac drop-shadow-sm" />
+      {/* Discover More Arrow - Centered like Services section */}
+      <div className="absolute bottom-8 w-full">
+        <div className="container mx-auto px-6">
+          <div className="flex justify-center">
+            <div className="animate-bounce">
+              <div className="flex flex-col items-center space-y-3">
+                <span className="text-lilac text-lg font-semibold drop-shadow-sm text-center whitespace-nowrap">
+                  {t('hero.discoverMore')}
+                </span>
+                <ArrowDown className="w-8 h-8 text-lilac drop-shadow-sm" />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

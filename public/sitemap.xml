@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Root redirect page -->
+  <url>
+    <loc>https://checamakeup.com/</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://checamakeup.com/en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://checamakeup.com/es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://checamakeup.com/"/>
+  </url>
+
+  <!-- English main page -->
+  <url>
+    <loc>https://checamakeup.com/en</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://checamakeup.com/es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://checamakeup.com/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://checamakeup.com/"/>
+    <image:image>
+      <image:loc>https://checamakeup.com/images/logo.png</image:loc>
+      <image:caption>Checa Makeup Professional Logo</image:caption>
+      <image:title>Checa Makeup - Professional Makeup Artist</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://checamakeup.com/images/about2.jpeg</image:loc>
+      <image:caption>Franchesca Martinez Castillo - Professional Makeup Artist</image:caption>
+      <image:title>Meet Franchesca - Checa Makeup Artist</image:title>
+    </image:image>
+  </url>
+
+  <!-- Spanish main page -->
+  <url>
+    <loc>https://checamakeup.com/es</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://checamakeup.com/en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://checamakeup.com/es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://checamakeup.com/"/>
+    <image:image>
+      <image:loc>https://checamakeup.com/images/logo.png</image:loc>
+      <image:caption>Logo Profesional Checa Makeup</image:caption>
+      <image:title>Checa Makeup - Maquilladora Profesional</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://checamakeup.com/images/about2.jpeg</image:loc>
+      <image:caption>Franchesca Martinez Castillo - Maquilladora Profesional</image:caption>
+      <image:title>Conoce a Franchesca - Artista Checa Makeup</image:title>
+    </image:image>
+  </url>
+
+  <!-- English sections with updated IDs -->
+  <url>
+    <loc>https://checamakeup.com/en#services</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://checamakeup.com/es#services"/>
+  </url>
+
+  <url>
+    <loc>https://checamakeup.com/en#portfolio</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://checamakeup.com/es#portfolio"/>
+    <image:image>
+      <image:loc>https://checamakeup.com/images/portfolio1.jpeg</image:loc>
+      <image:caption>Bridal Makeup Portfolio - Checa Makeup</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://checamakeup.com/images/portfolio2.jpeg</image:loc>
+      <image:caption>Wedding Makeup Portfolio - Checa Makeup</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://checamakeup.com/images/portfolio3.jpeg</image:loc>
+      <image:caption>Professional Makeup Portfolio - Checa Makeup</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://checamakeup.com/en#about</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://checamakeup.com/es#about"/>
+  </url>
+
+  <url>
+    <loc>https://checamakeup.com/en#how-we-work-packages</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://checamakeup.com/es#how-we-work-packages"/>
+  </url>
+
+  <url>
+    <loc>https://checamakeup.com/en#reviews</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://checamakeup.com/es#reviews"/>
+  </url>
+
+  <url>
+    <loc>https://checamakeup.com/en#partnership</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://checamakeup.com/es#partnership"/>
+  </url>
+
+  <url>
+    <loc>https://checamakeup.com/en#contact</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://checamakeup.com/es#contact"/>
+  </url>
+
+  <!-- Spanish sections with updated IDs -->
+  <url>
+    <loc>https://checamakeup.com/es#services</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://checamakeup.com/en#services"/>
+  </url>
+
+  <url>
+    <loc>https://checamakeup.com/es#portfolio</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://checamakeup.com/en#portfolio"/>
+    <image:image>
+      <image:loc>https://checamakeup.com/images/portfolio4.jpeg</image:loc>
+      <image:caption>Portafolio Maquillaje Nupcial - Checa Makeup</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://checamakeup.com/images/portfolio5.jpeg</image:loc>
+      <image:caption>Portafolio Maquillaje Bodas - Checa Makeup</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://checamakeup.com/images/portfolio6.jpeg</image:loc>
+      <image:caption>Portafolio Maquillaje Profesional - Checa Makeup</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://checamakeup.com/es#about</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://checamakeup.com/en#about"/>
+  </url>
+
+  <url>
+    <loc>https://checamakeup.com/es#how-we-work-packages</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://checamakeup.com/en#how-we-work-packages"/>
+  </url>
+
+  <url>
+    <loc>https://checamakeup.com/es#reviews</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://checamakeup.com/en#reviews"/>
+  </url>
+
+  <url>
+    <loc>https://checamakeup.com/es#partnership</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://checamakeup.com/en#partnership"/>
+  </url>
+
+  <url>
+    <loc>https://checamakeup.com/es#contact</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://checamakeup.com/en#contact"/>
+  </url>
+
+</urlset> 

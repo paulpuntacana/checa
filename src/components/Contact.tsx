@@ -4,12 +4,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin, Instagram, Facebook, MessageCircle } from 'lucide-react';
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Contact = () => {
+  const { t } = useLanguage();
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted');
-    // Form submission logic would go here
+    // Netlify will handle form submission automatically
   };
 
   return (
@@ -17,10 +20,10 @@ const Contact = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Get In Touch
+            {t('contact.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Ready to create something beautiful together? Let's discuss your vision and bring it to life.
+            {t('contact.subtitle')}
           </p>
         </div>
 
@@ -29,11 +32,10 @@ const Contact = () => {
           <div className="space-y-8">
             <div>
               <h3 className="font-playfair text-2xl font-bold text-foreground mb-6">
-                Let's Connect
+                {t('contact.letsConnect')}
               </h3>
               <p className="text-muted-foreground mb-8 leading-relaxed">
-                Whether you're planning a destination wedding, organizing a luxury event, or looking to establish 
-                a partnership with your resort, I'm here to help create unforgettable beauty experiences.
+                {t('contact.description')}
               </p>
             </div>
 
@@ -43,8 +45,8 @@ const Contact = () => {
                   <Phone className="w-6 h-6 text-coral" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-foreground">Phone</h4>
-                  <p className="text-muted-foreground">+1 (809) 555-0123</p>
+                  <h4 className="font-semibold text-foreground">{t('contact.phone')}</h4>
+                  <p className="text-muted-foreground">+1 (849) 354-4938</p>
                 </div>
               </div>
 
@@ -53,8 +55,8 @@ const Contact = () => {
                   <Mail className="w-6 h-6 text-turquoise" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-foreground">Email</h4>
-                  <p className="text-muted-foreground">hello@beautybydesign.com</p>
+                  <h4 className="font-semibold text-foreground">{t('contact.email')}</h4>
+                  <p className="text-muted-foreground">checamakeup24@gmail.com</p>
                 </div>
               </div>
 
@@ -63,24 +65,29 @@ const Contact = () => {
                   <MapPin className="w-6 h-6 text-coral" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-foreground">Location</h4>
-                  <p className="text-muted-foreground">Dominican Republic<br />Available nationwide</p>
+                  <h4 className="font-semibold text-foreground">{t('contact.location')}</h4>
+                  <p className="text-muted-foreground">Punta Cana - Dominican Republic</p>
                 </div>
               </div>
             </div>
 
             <div className="pt-8">
-              <h4 className="font-semibold text-foreground mb-4">Follow Our Work</h4>
-              <div className="flex space-x-4">
-                <Button variant="outline" size="icon" className="hover:bg-coral hover:text-white transition-colors duration-300">
-                  <Instagram className="w-5 h-5" />
-                </Button>
-                <Button variant="outline" size="icon" className="hover:bg-turquoise hover:text-white transition-colors duration-300">
-                  <Facebook className="w-5 h-5" />
-                </Button>
-                <Button variant="outline" size="icon" className="hover:bg-coral hover:text-white transition-colors duration-300">
-                  <MessageCircle className="w-5 h-5" />
-                </Button>
+              <h4 className="font-semibold text-foreground mb-4">{t('contact.followWork')}</h4>
+              <div>
+                <a 
+                  href="https://www.instagram.com/checa_makeup/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  <Button 
+                    variant="outline" 
+                    size="lg" 
+                    className="hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-600 hover:text-white transition-all duration-300 transform hover:scale-105 border-2 border-pink-400 text-pink-600 px-6 py-3"
+                  >
+                    <Instagram className="w-6 h-6 mr-2" />
+                    Follow @checa_makeup
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
@@ -89,71 +96,115 @@ const Contact = () => {
           <Card className="border-0 shadow-xl">
             <CardHeader>
               <CardTitle className="font-playfair text-2xl font-bold text-foreground">
-                Send a Message
+                {t('contact.sendMessage')}
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form 
+                name="contact" 
+                method="POST" 
+                data-netlify="true" 
+                data-netlify-honeypot="bot-field"
+                onSubmit={handleSubmit} 
+                className="space-y-6"
+              >
+                <input type="hidden" name="form-name" value="contact" />
+                <div style={{ display: 'none' }}>
+                  <label>
+                    Don't fill this out if you're human: <input name="bot-field" />
+                  </label>
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="firstName" className="block text-sm font-medium text-foreground mb-2">
-                      First Name
+                      {t('contact.firstName')}
                     </label>
-                    <Input id="firstName" placeholder="Your first name" className="border-gray-200 focus:border-coral" />
+                    <Input 
+                      id="firstName" 
+                      name="firstName"
+                      placeholder={t('contact.firstNamePlaceholder')} 
+                      className="border-gray-200 focus:border-coral" 
+                      required 
+                    />
                   </div>
                   <div>
                     <label htmlFor="lastName" className="block text-sm font-medium text-foreground mb-2">
-                      Last Name
+                      {t('contact.lastName')}
                     </label>
-                    <Input id="lastName" placeholder="Your last name" className="border-gray-200 focus:border-coral" />
+                    <Input 
+                      id="lastName" 
+                      name="lastName"
+                      placeholder={t('contact.lastNamePlaceholder')} 
+                      className="border-gray-200 focus:border-coral" 
+                      required 
+                    />
                   </div>
                 </div>
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                    Email
+                    {t('contact.email')}
                   </label>
-                  <Input id="email" type="email" placeholder="your.email@example.com" className="border-gray-200 focus:border-coral" />
+                  <Input 
+                    id="email" 
+                    name="email"
+                    type="email" 
+                    placeholder={t('contact.emailPlaceholder')} 
+                    className="border-gray-200 focus:border-coral" 
+                    required 
+                  />
                 </div>
 
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                    Phone (Optional)
+                    {t('contact.phoneOptional')}
                   </label>
-                  <Input id="phone" placeholder="+1 (809) 555-0123" className="border-gray-200 focus:border-coral" />
+                  <Input 
+                    id="phone" 
+                    name="phone"
+                    placeholder={t('contact.phonePlaceholder')} 
+                    className="border-gray-200 focus:border-coral" 
+                  />
                 </div>
 
                 <div>
                   <label htmlFor="service" className="block text-sm font-medium text-foreground mb-2">
-                    Service Interest
+                    {t('contact.serviceInterest')}
                   </label>
-                  <select id="service" className="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:border-coral">
-                    <option>Select a service</option>
-                    <option>Bridal Makeup</option>
-                    <option>Event Makeup</option>
-                    <option>Resort Partnership</option>
-                    <option>Editorial/Photo Shoot</option>
-                    <option>Group Services</option>
-                    <option>Other</option>
+                  <select 
+                    id="service" 
+                    name="service"
+                    className="w-full px-3 py-2 border border-gray-200 rounded-md focus:outline-none focus:border-coral"
+                    required
+                  >
+                    <option value="">{t('contact.selectService')}</option>
+                    <option value="bridal">{t('contact.bridalMakeup')}</option>
+                    <option value="event">{t('contact.eventMakeup')}</option>
+                    <option value="resort">{t('contact.resortPartnership')}</option>
+                    <option value="editorial">{t('contact.editorialPhoto')}</option>
+                    <option value="group">{t('contact.groupServices')}</option>
+                    <option value="other">{t('contact.other')}</option>
                   </select>
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                    Message
+                    {t('contact.message')}
                   </label>
                   <Textarea 
                     id="message" 
-                    placeholder="Tell us about your event, vision, or partnership interest..."
+                    name="message"
+                    placeholder={t('contact.messagePlaceholder')}
                     className="border-gray-200 focus:border-coral min-h-[120px]"
+                    required
                   />
                 </div>
 
                 <Button 
                   type="submit" 
-                  className="w-full bg-gradient-to-r from-coral to-turquoise hover:from-coral-light hover:to-turquoise text-white font-semibold py-3 transition-all duration-300 transform hover:scale-105"
+                  className="w-full bg-[#f4e1ff] hover:bg-[#f4e1ff]/90 text-purple-900 font-semibold py-3 transition-all duration-300 transform hover:scale-105 border border-purple-200"
                 >
-                  Send Message
+                  {t('contact.send')}
                 </Button>
               </form>
             </CardContent>

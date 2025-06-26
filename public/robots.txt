@@ -1,8 +1,14 @@
+# Checa Makeup - Professional Makeup Artist in Punta Cana, Dominican Republic
+# Website: https://checamakeup.com
+# Contact: checamakeup24@gmail.com
+
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Twitterbot
 Allow: /
@@ -10,5 +16,58 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
 User-agent: *
 Allow: /
+
+# Language-specific pages
+Allow: /en
+Allow: /es
+
+# Updated section anchors
+Allow: /en#services
+Allow: /en#portfolio
+Allow: /en#about
+Allow: /en#how-we-work-packages
+Allow: /en#reviews
+Allow: /en#partnership
+Allow: /en#contact
+
+Allow: /es#services
+Allow: /es#portfolio
+Allow: /es#about
+Allow: /es#how-we-work-packages
+Allow: /es#reviews
+Allow: /es#partnership
+Allow: /es#contact
+
+# Allow important image files
+Allow: /images/logo.png
+Allow: /images/about2.jpeg
+Allow: /images/portfolio*.jpeg
+Allow: /images/diamond.jpg
+Allow: /images/sapphire.png
+Allow: /images/ruby.png
+
+# Disallow unnecessary files
+Disallow: /src/
+Disallow: /*.map$
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /package*.json
+Disallow: /tsconfig*.json
+Disallow: /vite.config.ts
+Disallow: /tailwind.config.ts
+Disallow: /postcss.config.js
+Disallow: /eslint.config.js
+
+# Sitemap location
+Sitemap: https://checamakeup.com/sitemap.xml
+
+# Host directive (preferred domain)
+Host: https://checamakeup.com
