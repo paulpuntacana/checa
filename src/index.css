@@ -74,6 +74,26 @@
   body {
     @apply bg-background text-foreground font-inter;
   }
+  
+  /* Hide scroll indicators on iOS Safari */
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  body {
+    /* Hide scroll indicator on iOS */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+  
+  body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  
+  /* Prevent iOS scroll indicator overlay */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 @layer utilities {
