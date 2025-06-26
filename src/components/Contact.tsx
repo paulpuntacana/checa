@@ -50,38 +50,38 @@ const Contact = () => {
                 <div className="flex items-start space-x-4 p-4 bg-white rounded-lg border border-purple-100">
                   <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
                     1
-                  </div>
-                  <div>
+                </div>
+                <div>
                     <h5 className="font-semibold text-foreground mb-1">
                       {t('contact.specifications.1.title')}
                     </h5>
                     <p className="text-muted-foreground text-sm leading-relaxed">
                       {t('contact.specifications.1.desc')}
                     </p>
-                  </div>
                 </div>
+              </div>
 
                 {/* Specification 2 */}
                 <div className="flex items-start space-x-4 p-4 bg-white rounded-lg border border-purple-100">
                   <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
                     2
-                  </div>
-                  <div>
+                </div>
+                <div>
                     <h5 className="font-semibold text-foreground mb-1">
                       {t('contact.specifications.2.title')}
                     </h5>
                     <p className="text-muted-foreground text-sm leading-relaxed">
                       {t('contact.specifications.2.desc')}
                     </p>
-                  </div>
                 </div>
+              </div>
 
                 {/* Specification 3 */}
                 <div className="flex items-start space-x-4 p-4 bg-white rounded-lg border border-purple-100">
                   <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
                     3
-                  </div>
-                  <div>
+                </div>
+                <div>
                     <h5 className="font-semibold text-foreground mb-1">
                       {t('contact.specifications.3.title')}
                     </h5>

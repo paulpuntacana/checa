@@ -74,10 +74,10 @@ const Partnership = () => {
 
         {/* Benefits Grid - 2 rows x 3 columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
-          {benefits.map((benefit, index) => (
+              {benefits.map((benefit, index) => (
             <div key={index} className="group p-4 rounded-xl bg-white/15 backdrop-blur-sm hover:bg-white/25 transition-all duration-300 border border-white/20 text-center">
               <div className="w-12 h-12 bg-white/30 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-white/40 transition-colors duration-300">
-                <benefit.icon className="w-6 h-6 text-foreground" />
+                    <benefit.icon className="w-6 h-6 text-foreground" />
               </div>
               <h4 className="font-semibold text-foreground mb-2 font-playfair text-lg drop-shadow-sm">{benefit.title}</h4>
               <p className="text-foreground/80 text-xs leading-relaxed">{benefit.description}</p>

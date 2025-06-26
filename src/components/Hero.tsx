@@ -53,43 +53,43 @@ const Hero = () => {
         <img 
           src="/images/logo.png" 
           alt="Checa Makeup Logo" 
-          className="h-14 lg:h-32 w-auto drop-shadow-lg"
+          className="h-20 lg:h-32 w-auto drop-shadow-lg"
         />
       </div>
-      {/* Elegant decorative elements */}
-      <div className="absolute top-40 right-20 w-24 h-0.5 bg-gradient-to-r from-transparent via-lilac/50 to-transparent hidden lg:block transform -rotate-12" style={{animationDelay: '2s'}}></div>
-      <div className="absolute bottom-48 left-20 w-20 h-0.5 bg-gradient-to-r from-transparent via-purple-200/70 to-transparent hidden lg:block transform rotate-45" style={{animationDelay: '0.5s'}}></div>
+      {/* Elegant decorative elements - Hidden on all mobile devices */}
+      <div className="absolute top-40 right-20 w-24 h-0.5 bg-gradient-to-r from-transparent via-lilac/50 to-transparent hidden xl:block transform -rotate-12" style={{animationDelay: '2s'}}></div>
+      <div className="absolute bottom-48 left-20 w-20 h-0.5 bg-gradient-to-r from-transparent via-purple-200/70 to-transparent hidden xl:block transform rotate-45" style={{animationDelay: '0.5s'}}></div>
       
       <div className="container mx-auto px-6 relative z-10 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
           {/* Left side - Text content */}
           <div className="animate-fade-in lg:col-span-2 order-1 lg:order-1 lg:mt-8 lg:pl-8 xl:pl-16">
-            
+          
             <h1 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight drop-shadow-sm text-center lg:text-left">
-              {t('hero.title1')}
+            {t('hero.title1')}
               <span className="block text-foreground">
-                {t('hero.title2')}
-              </span>
+              {t('hero.title2')}
+            </span>
               <span className="block bg-gradient-to-r from-lilac to-purple-soft bg-clip-text text-transparent">
                 {t('hero.title3')}
               </span>
-            </h1>
-            
+          </h1>
+          
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-sm text-center lg:text-left">
-              {t('hero.subtitle')}
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Button 
+            {t('hero.subtitle')}
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <Button 
                 onClick={scrollToHowWeWork}
-                size="lg" 
+              size="lg" 
                 className="bg-purple-700 text-white hover:bg-purple-800 transition-all duration-300 transform hover:scale-105 font-semibold px-8 py-3 shadow-xl border-2 border-white/20"
-              >
+            >
                 {t('hero.howWeWork')}
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
+            </Button>
+            <Button 
+              variant="outline" 
+              size="lg"
                 className="border-2 border-lilac text-purple-800 hover:bg-lilac hover:text-white transition-all duration-300 transform hover:scale-105 font-semibold px-8 py-3 bg-white shadow-lg"
                 onClick={scrollToContact}
               >
@@ -98,7 +98,7 @@ const Hero = () => {
             </div>
             
             {/* Elegant line under buttons - left aligned */}
-            <div className="hidden lg:flex justify-center lg:justify-start mb-8">
+            <div className="hidden xl:flex justify-center lg:justify-start mb-8">
               <div className="flex items-center justify-center space-x-3 max-w-md">
                 <div className="w-24 h-0.5 bg-gradient-to-r from-purple-400 to-lilac rounded-full"></div>
                 <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse"></div>
@@ -112,7 +112,7 @@ const Hero = () => {
           {/* Right side - Video */}
           <div className="relative w-full max-w-xl mx-auto lg:col-span-3 order-2 lg:order-2 flex flex-col justify-center">
             {/* Horizontal decorative line above video - right aligned, running from right to left */}
-            <div className="hidden lg:flex justify-end mb-6">
+            <div className="hidden xl:flex justify-end mb-6">
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-0.5 bg-gradient-to-l from-purple-400 to-lilac rounded-full"></div>
                 <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>

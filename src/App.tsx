@@ -18,13 +18,13 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <LanguageProvider>
-          <Routes>
+        <Routes>
             <Route path="/" element={<LanguageRedirect />} />
             <Route path="/en" element={<Index />} />
             <Route path="/es" element={<Index />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
         </LanguageProvider>
       </BrowserRouter>
     </TooltipProvider>

@@ -13,20 +13,20 @@ import SEOSchema from "@/components/SEOSchema";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+      <div className="min-h-screen">
       <SEOHead />
       <SEOSchema />
-      <LanguageToggle />
-      <Hero />
+        <LanguageToggle />
+        <Hero />
       <Services />
       <Portfolio />
-      <About />
+        <About />
       <HowWeWorkPackages />
       <Reviews />
-      <Partnership />
-      <Contact />
+        <Partnership />
+        <Contact />
       <Footer />
-    </div>
+      </div>
   );
 };
 

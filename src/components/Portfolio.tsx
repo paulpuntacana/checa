@@ -74,11 +74,11 @@ const Portfolio = () => {
                     <Instagram className="w-4 h-4" />
                     View on Instagram
                   </a>
-                </div>
-              </div>
+            </div>
+          </div>
             ))}
           </div>
-          
+
           {/* Instagram CTA */}
           <div className="text-center mt-12">
             <a 
