@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import VideoSection from "@/components/VideoSection";
 import Services from "@/components/Services";
 import About from "@/components/About";
 import HowWeWorkPackages from "@/components/HowWeWorkPackages";
@@ -16,6 +17,7 @@ const Index = () => {
       <SEOHead />
       <SEOSchema />
         <Hero />
+      <VideoSection />
       <Services />
       <Portfolio />
         <About />

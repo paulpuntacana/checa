@@ -45,8 +45,32 @@ const Portfolio = () => {
           </p>
           <p className="text-lg text-purple-600 font-medium">
             {t('language.english') === 'English' 
-              ? 'Live from our Instagram @checa_makeup' 
-              : 'Directo desde nuestro Instagram @checa_makeup'
+              ? (
+                <>
+                  Live from our Instagram{' '}
+                  <a 
+                    href="https://www.instagram.com/checa_makeup/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-purple-800 transition-colors underline"
+                  >
+                    @checa_makeup
+                  </a>
+                </>
+              )
+              : (
+                <>
+                  Directo desde nuestro Instagram{' '}
+                  <a 
+                    href="https://www.instagram.com/checa_makeup/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-purple-800 transition-colors underline"
+                  >
+                    @checa_makeup
+                  </a>
+                </>
+              )
             }
           </p>
         </div>

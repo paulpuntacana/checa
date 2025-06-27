@@ -206,7 +206,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-gradient-to-br from-warm-white via-purple-50/30 to-white relative overflow-hidden">
+    <section id="services" className="py-12 bg-gradient-to-br from-warm-white via-purple-50/30 to-white relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
         <div className="absolute top-20 left-10 w-64 h-64 bg-purple-100/20 rounded-full blur-3xl"></div>
@@ -215,13 +215,7 @@ const Services = () => {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center mb-6">
-            <div className="w-16 h-0.5 bg-gradient-to-r from-transparent to-purple-300 mr-4"></div>
-            <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse"></div>
-            <div className="w-16 h-0.5 bg-gradient-to-l from-transparent to-purple-300 ml-4"></div>
-          </div>
-          
+        <div className="text-center mb-16">          
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-6">
             {t('services.title')}
           </h2>
@@ -229,12 +223,6 @@ const Services = () => {
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             {t('services.subtitle')}
           </p>
-          
-          <div className="mt-6 flex items-center justify-center">
-            <div className="w-24 h-0.5 bg-gradient-to-r from-purple-400 to-lilac rounded-full"></div>
-            <div className="w-2 h-2 bg-purple-400 rounded-full mx-3 animate-pulse"></div>
-            <div className="w-24 h-0.5 bg-gradient-to-l from-purple-400 to-lilac rounded-full"></div>
-          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

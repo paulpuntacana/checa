@@ -35,8 +35,8 @@ const translations: Translations = {
     'about.philosophyDesc': 'From luxury resorts to intimate weddings, her style is always elegant, personal, and heat-proof.',
     
     // Portfolio section
-    'portfolio.title': 'Glamorous Portfolio',
-    'portfolio.subtitle': 'Discover our stunning makeup transformations for weddings, events, and photoshoots',
+    'portfolio.title': 'Real Brides. Real Moments.',
+    'portfolio.subtitle': 'Discover real looks created for weddings, special events, and editorials.',
     'portfolio.viewOnInstagram': 'View on Instagram',
     
     // Services section
@@ -171,8 +171,8 @@ const translations: Translations = {
     'about.philosophyDesc': 'Desde resorts de lujo hasta celebraciones íntimas, su toque es siempre personalizado, elegante y a prueba de calor.',
     
     // Portfolio section
-    'portfolio.title': 'Portafolio Glamoroso',
-    'portfolio.subtitle': 'Descubre nuestras impresionantes transformaciones de maquillaje para bodas, eventos y sesiones fotográficas',
+    'portfolio.title': 'Novias reales. Momentos auténticos.',
+    'portfolio.subtitle': 'Descubre looks reales creados para bodas, eventos especiales y editoriales.',
     'portfolio.viewOnInstagram': 'Ver en Instagram',
     
     // Services section
