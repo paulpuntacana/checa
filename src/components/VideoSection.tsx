@@ -9,28 +9,16 @@ const VideoSection = () => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const handlePlayVideo = () => {
-    setIsPlaying(true);
-    
     // Check if it's a mobile device
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
     
     if (isMobile) {
-      // Small delay to ensure iframe is rendered
-      setTimeout(() => {
-        const iframe = iframeRef.current;
-        if (iframe) {
-          // Try to request fullscreen
-          if (iframe.requestFullscreen) {
-            iframe.requestFullscreen();
-          } else if ((iframe as any).webkitRequestFullscreen) {
-            (iframe as any).webkitRequestFullscreen();
-          } else if ((iframe as any).mozRequestFullScreen) {
-            (iframe as any).mozRequestFullScreen();
-          } else if ((iframe as any).msRequestFullscreen) {
-            (iframe as any).msRequestFullscreen();
-          }
-        }
-      }, 500);
+      // On mobile, open YouTube directly in a new tab/app for better experience
+      const youtubeUrl = 'https://www.youtube.com/watch?v=7PFpO1XeycE&t=10s';
+      window.open(youtubeUrl, '_blank');
+    } else {
+      // On desktop, show the embedded video
+      setIsPlaying(true);
     }
   };
 
@@ -80,14 +68,14 @@ const VideoSection = () => {
             {t('language.english') === 'English' 
               ? (
                 <>
-                  <span className="block text-4xl md:text-5xl" style={{ color: '#000000' }}>Based in Punta Cana.</span>
+                  <span className="block text-3xl md:text-5xl" style={{ color: '#000000' }}>Based in Punta Cana.</span>
                   <span className="block text-2xl md:text-3xl lg:text-4xl" style={{ color: '#000000' }}>Rooted in La Romana.</span>
                   <span className="block text-3xl md:text-4xl lg:text-4xl" style={{ color: '#512082' }}>Created with passion.</span>
                 </>
               ) 
               : (
                 <>
-                  <span className="block text-4xl md:text-5xl" style={{ color: '#000000' }}>Con base en Punta Cana.</span>
+                  <span className="block text-3xl md:text-5xl" style={{ color: '#000000' }}>Con base en Punta Cana.</span>
                   <span className="block text-2xl md:text-3xl lg:text-4xl" style={{ color: '#000000' }}>Con raíces en La Romana.</span>
                   <span className="block text-3xl md:text-4xl lg:text-4xl" style={{ color: '#512082' }}>Creado con pasión.</span>
                 </>

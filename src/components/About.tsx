@@ -9,11 +9,11 @@ const About = () => {
       <div className="container mx-auto px-6">
         {/* Mobile title - only visible on mobile */}
         <div className="lg:hidden text-center mb-8">
-          <div className="flex items-center justify-center mb-6">
-            <div className="w-12 h-12 bg-gradient-glamour rounded-full flex items-center justify-center mr-4">
+          <div className="flex flex-col items-center justify-center mb-6">
+            <div className="w-12 h-12 bg-gradient-glamour rounded-full flex items-center justify-center mb-4">
               <Heart className="w-6 h-6 text-white" fill="currentColor" />
             </div>
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground">
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground text-center">
               {t('about.meetTitle')}
             </h2>
           </div>
