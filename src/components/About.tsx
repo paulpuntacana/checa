@@ -5,10 +5,10 @@ const About = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="about" className="py-16 bg-warm-white scroll-mt-24">
+    <section id="about" className="py-8 lg:py-16 bg-warm-white scroll-mt-24">
       <div className="container mx-auto px-6">
         {/* Mobile title - only visible on mobile */}
-        <div className="lg:hidden text-center mb-8">
+        <div className="lg:hidden text-center mb-8 pt-4">
           <div className="flex flex-col items-center justify-center mb-6">
             <div className="w-12 h-12 bg-gradient-glamour rounded-full flex items-center justify-center mb-4">
               <Heart className="w-6 h-6 text-white" fill="currentColor" />

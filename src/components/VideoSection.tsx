@@ -9,16 +9,33 @@ const VideoSection = () => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const handlePlayVideo = () => {
+    setIsPlaying(true);
+    
     // Check if it's a mobile device
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
     
     if (isMobile) {
-      // On mobile, open YouTube directly in a new tab/app for better experience
-      const youtubeUrl = 'https://www.youtube.com/watch?v=7PFpO1XeycE&t=10s';
-      window.open(youtubeUrl, '_blank');
-    } else {
-      // On desktop, show the embedded video
-      setIsPlaying(true);
+      // Small delay to ensure iframe is rendered, then request fullscreen
+      setTimeout(() => {
+        const iframe = iframeRef.current;
+        if (iframe) {
+          // First try to focus the iframe
+          iframe.focus();
+          
+          // Then request fullscreen with better mobile support
+          const requestFullscreen = iframe.requestFullscreen || 
+                                  (iframe as any).webkitRequestFullscreen || 
+                                  (iframe as any).webkitEnterFullscreen || 
+                                  (iframe as any).mozRequestFullScreen || 
+                                  (iframe as any).msRequestFullscreen;
+          
+          if (requestFullscreen) {
+            requestFullscreen.call(iframe).catch((err: any) => {
+              console.log('Fullscreen request failed:', err);
+            });
+          }
+        }
+      }, 1000);
     }
   };
 
