@@ -34,11 +34,28 @@ const Portfolio = () => {
   ];
 
   return (
-    <section id="portfolio" className="py-20 bg-lilac-light/30">
+    <section id="portfolio" className="py-20 bg-lilac-light/30 scroll-mt-24">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-6">
-            {t('portfolio.title')}
+            {t('language.english') === 'English' 
+              ? (
+                <>
+                  Real Brides.
+                  <br className="md:hidden" />
+                  <span className="hidden md:inline"> </span>
+                  Real Moments.
+                </>
+              ) 
+              : (
+                <>
+                  Novias reales.
+                  <br className="md:hidden" />
+                  <span className="hidden md:inline"> </span>
+                  Momentos auténticos.
+                </>
+              )
+            }
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-4">
             {t('portfolio.subtitle')}

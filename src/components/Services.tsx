@@ -206,7 +206,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-12 bg-gradient-to-br from-warm-white via-purple-50/30 to-white relative overflow-hidden">
+    <section id="services" className="pt-32 pb-16 bg-gradient-to-br from-warm-white via-purple-50/30 to-white relative overflow-hidden scroll-mt-48">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
         <div className="absolute top-20 left-10 w-64 h-64 bg-purple-100/20 rounded-full blur-3xl"></div>

@@ -10,6 +10,28 @@ const VideoSection = () => {
 
   const handlePlayVideo = () => {
     setIsPlaying(true);
+    
+    // Check if it's a mobile device
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+    
+    if (isMobile) {
+      // Small delay to ensure iframe is rendered
+      setTimeout(() => {
+        const iframe = iframeRef.current;
+        if (iframe) {
+          // Try to request fullscreen
+          if (iframe.requestFullscreen) {
+            iframe.requestFullscreen();
+          } else if ((iframe as any).webkitRequestFullscreen) {
+            (iframe as any).webkitRequestFullscreen();
+          } else if ((iframe as any).mozRequestFullScreen) {
+            (iframe as any).mozRequestFullScreen();
+          } else if ((iframe as any).msRequestFullscreen) {
+            (iframe as any).msRequestFullscreen();
+          }
+        }
+      }, 500);
+    }
   };
 
   useEffect(() => {
@@ -54,20 +76,20 @@ const VideoSection = () => {
         {/* Centered Title Section */}
         <div className="text-center mb-16">
           {/* Main Title */}
-          <h2 className="font-playfair text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight mb-8">
+          <h2 className="font-playfair font-bold text-foreground leading-tight mb-8">
             {t('language.english') === 'English' 
               ? (
                 <>
-                  <span className="block" style={{ color: '#000000' }}>Based in Punta Cana.</span>
-                  <span className="block" style={{ color: '#000000' }}>Rooted in La Romana.</span>
-                  <span className="block" style={{ color: '#512082' }}>Created with passion.</span>
+                  <span className="block text-4xl md:text-5xl" style={{ color: '#000000' }}>Based in Punta Cana.</span>
+                  <span className="block text-2xl md:text-3xl lg:text-4xl" style={{ color: '#000000' }}>Rooted in La Romana.</span>
+                  <span className="block text-3xl md:text-4xl lg:text-4xl" style={{ color: '#512082' }}>Created with passion.</span>
                 </>
               ) 
               : (
                 <>
-                  <span className="block" style={{ color: '#000000' }}>Con base en Punta Cana.</span>
-                  <span className="block" style={{ color: '#000000' }}>Con raíces en La Romana.</span>
-                  <span className="block" style={{ color: '#512082' }}>Creado con pasión.</span>
+                  <span className="block text-4xl md:text-5xl" style={{ color: '#000000' }}>Con base en Punta Cana.</span>
+                  <span className="block text-2xl md:text-3xl lg:text-4xl" style={{ color: '#000000' }}>Con raíces en La Romana.</span>
+                  <span className="block text-3xl md:text-4xl lg:text-4xl" style={{ color: '#512082' }}>Creado con pasión.</span>
                 </>
               )
             }
@@ -326,12 +348,7 @@ const VideoSection = () => {
                }
              </p>
 
-             <p className="text-lg">
-               {t('language.english') === 'English' 
-                 ? "Known for being calm, precise, and fully prepared, we make sure your day flows beautifully — from first touch-up to final photo."
-                 : "Nos caracterizamos por nuestra calma, precisión y preparación, asegurando que tu día fluya con belleza desde el primer toque hasta la última foto."
-               }
-             </p>
+
 
              <p className="text-lg font-medium text-purple-800">
                {t('language.english') === 'English' 

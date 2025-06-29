@@ -51,7 +51,7 @@ const Hero = () => {
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src="/images/video-background.mp4" type="video/mp4" />
+          <source src="/images/video-background5.mp4" type="video/mp4" />
         </video>
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/40"></div>
@@ -272,7 +272,7 @@ const Hero = () => {
       }`}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left side - Text content */}
-          <div className="animate-fade-in mt-16 lg:mt-8 lg:pl-8 xl:pl-16 text-center lg:text-left">
+          <div className="animate-fade-in mt-16 lg:mt-8 lg:pl-8 xl:pl-16 text-left">
             <h1 className="font-playfair text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight drop-shadow-2xl text-white">
               {t('hero.title1')}
               <span className="block text-white">
@@ -283,12 +283,12 @@ const Hero = () => {
               </span>
             </h1>
             
-            <p className="text-lg md:text-xl lg:text-2xl mb-12 max-w-2xl mx-auto lg:mx-0 font-light drop-shadow-lg text-white">
+            <p className="text-lg md:text-xl lg:text-2xl mb-12 max-w-2xl font-light drop-shadow-lg text-white">
               {t('hero.subtitle')}
             </p>
             
             {/* Two Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-3 justify-start">
               <button 
                 onClick={scrollToContact}
                 className="bg-white/95 text-purple-900 px-6 py-3 font-medium text-base rounded-lg transition-all duration-300 transform hover:scale-105 hover:bg-white hover:shadow-lg backdrop-blur-sm border border-white/30 shadow-md"

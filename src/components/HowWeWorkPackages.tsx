@@ -165,7 +165,7 @@ const HowWeWorkPackages = () => {
   const stepIcons = [MessageCircle, Palette, Brush, Sparkles];
 
   return (
-    <section id="how-we-work-packages" className="py-16 bg-gradient-to-br from-warm-white to-white">
+            <section id="how-we-work-packages" className="py-16 bg-gradient-to-br from-warm-white to-white scroll-mt-24">
       <div className="container mx-auto px-6">
         {/* Main Section Title */}
         <div className="text-center mb-12">
